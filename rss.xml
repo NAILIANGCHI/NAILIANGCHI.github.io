@@ -1,0 +1,1028 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>奈良池博客</title>
+        <subtitle>记录学习与生活</subtitle>
+        <icon>https://www.naraci.top/images/favicon.ico</icon>
+        <link>https://www.naraci.top</link>
+        <author>
+          <name>Naraci</name>
+        </author>
+        <description>No woman in heart, natural God in code！</description>
+        <language>zh-CN</language>
+        <pubDate>Thu, 19 Oct 2023 00:00:00 +0800</pubDate>
+        <lastBuildDate>Thu, 19 Oct 2023 00:00:00 +0800</lastBuildDate>
+        <category term="blog" />
+        <category term="奈良池" />
+        <category term="博客" />
+        <category term="Hexo" />
+        <category term="编程" />
+        <category term="code" />
+        <category term="Naraci" />
+        <category term="naraci" />
+        <category term="奈良池博客" />
+        <category term="编程技术" />
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/1.html</guid>
+            <title>Java单列模式</title>
+            <link>https://www.naraci.top/post/1.html</link>
+            <category term="Java" scheme="https://www.naraci.top/categories/Java/" />
+            <category term="Java" scheme="https://www.naraci.top/tags/Java/" />
+            <pubDate>Thu, 19 Oct 2023 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;java单列模式介绍&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#java单列模式介绍&#34;&gt;#&lt;/a&gt; Java 单列模式介绍&lt;/h1&gt;
+&lt;p&gt;主要解决全局使用的类频繁的创建与销毁&lt;br&gt;
+保证一个类仅有一个实例，并提供一个访问它的全局访问点&lt;br&gt;
+&lt;strong&gt;创建一个 Singleton&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;SingleObject&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   &lt;span class=&#34;comment&#34;&gt;//创建 SingleObject 的一个对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;type&#34;&gt;SingleObject&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;instance&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;SingleObject&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   &lt;span class=&#34;comment&#34;&gt;//让构造函数为 private，这样该类就不会被实例化&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;SingleObject&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt;&amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   &lt;span class=&#34;comment&#34;&gt;//获取唯一可用的对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; SingleObject &lt;span class=&#34;title function_&#34;&gt;getInstance&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; instance;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;showMessage&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      System.out.println(&lt;span class=&#34;string&#34;&gt;&amp;quot;Hello World!&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;从 singleton 类获取唯一的对象&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;SingletonPatternDemo&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(String[] args)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      &lt;span class=&#34;comment&#34;&gt;//不合法的构造函数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      &lt;span class=&#34;comment&#34;&gt;//编译时错误：构造函数 SingleObject() 是不可见的&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      &lt;span class=&#34;comment&#34;&gt;//SingleObject object = new SingleObject();&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      &lt;span class=&#34;comment&#34;&gt;//获取唯一可用的对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      &lt;span class=&#34;type&#34;&gt;SingleObject&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;object&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; SingleObject.getInstance();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      &lt;span class=&#34;comment&#34;&gt;//显示消息&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      object.showMessage();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;执行输出&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Hello World!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;懒汉式-线程不安全-不支持多线程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#懒汉式-线程不安全-不支持多线程&#34;&gt;#&lt;/a&gt; 懒汉式 线程不安全 （不支持多线程）&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;特点：&lt;/strong&gt; 最基本的实现方式，但是不支持多线程，没有加锁 synchronized, 所以严格意义上它并不算单列模式&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Singleton&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; Singleton instance;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;Singleton&lt;/span&gt; &lt;span class=&#34;params&#34;&gt;()&lt;/span&gt;&amp;#123;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; Singleton &lt;span class=&#34;title function_&#34;&gt;getInstance&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (instance == &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;) &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            instance = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Singleton&lt;/span&gt;();  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; instance;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;懒汉式-线程安全&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#懒汉式-线程安全&#34;&gt;#&lt;/a&gt; 懒汉式 线程安全&lt;/h2&gt;
+&lt;p&gt;** 描述：** 这种方式具备很好的 lazy loading，能够在多线程中很好的工作，但是，效率很低，99% 情况下不需要同步。&lt;br&gt;
+优点：第一次调用才初始化，避免内存浪费。&lt;br&gt;
+缺点：必须加锁 synchronized 才能保证单例，但加锁会影响效率。&lt;br&gt;
+getInstance () 的性能对应用程序不是很关键（该方法使用不太频繁）。&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Singleton&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; Singleton instance;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;Singleton&lt;/span&gt; &lt;span class=&#34;params&#34;&gt;()&lt;/span&gt;&amp;#123;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;synchronized&lt;/span&gt; Singleton &lt;span class=&#34;title function_&#34;&gt;getInstance&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (instance == &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;) &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            instance = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Singleton&lt;/span&gt;();  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; instance;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;饿汉式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#饿汉式&#34;&gt;#&lt;/a&gt; 饿汉式&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;描述&lt;/strong&gt;：这种方式比较常用，但容易产生垃圾对象。&lt;br&gt;
+优点：没有加锁，执行效率会提高。&lt;br&gt;
+缺点：类加载时就初始化，浪费内存。&lt;br&gt;
+它基于 classloader 机制避免了多线程的同步问题，不过，instance 在类装载时就实例化，虽然导致类装载的原因有很多种，在单例模式中大多数都是调用 getInstance 方法， 但是也不能确定有其他的方式（或者其他的静态方法）导致类装载，这时候初始化 instance 显然没有达到 lazy loading 的效果。&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Singleton&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;type&#34;&gt;Singleton&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;instance&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Singleton&lt;/span&gt;();  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;Singleton&lt;/span&gt; &lt;span class=&#34;params&#34;&gt;()&lt;/span&gt;&amp;#123;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; Singleton &lt;span class=&#34;title function_&#34;&gt;getInstance&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; instance;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;双检锁-双重校验锁-dcl即-double-checked-locking&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#双检锁-双重校验锁-dcl即-double-checked-locking&#34;&gt;#&lt;/a&gt; 双检锁 / 双重校验锁 （### DCL，即 double-checked locking）&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;描述：&lt;/strong&gt; 这种方式采用双锁机制，安全且在多线程情况下能保持高性能。&lt;br&gt;
+getInstance () 的性能对应用程序很关键。&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Singleton&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;volatile&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; Singleton singleton;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;Singleton&lt;/span&gt; &lt;span class=&#34;params&#34;&gt;()&lt;/span&gt;&amp;#123;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; Singleton &lt;span class=&#34;title function_&#34;&gt;getSingleton&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (singleton == &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;) &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;synchronized&lt;/span&gt; (Singleton.class) &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (singleton == &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;) &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                singleton = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Singleton&lt;/span&gt;();  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; singleton;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;枚举&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#枚举&#34;&gt;#&lt;/a&gt; 枚举&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;描述：&lt;/strong&gt; 这种实现方式还没有被广泛采用，但这是实现单例模式的最佳方法。它更简洁，自动支持序列化机制，绝对防止多次实例化。&lt;br&gt;
+这种方式是 Effective Java 作者 Josh Bloch 提倡的方式，它不仅能避免多线程同步问题，而且还自动支持序列化机制，防止反序列化重新创建新的对象，绝对防止多次实例化。不过，由于 JDK1.5 之后才加入 enum 特性，用这种方式写不免让人感觉生疏，在实际工作中，也很少用。&lt;br&gt;
+不能通过 reflection attack 来调用私有构造方法。&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;enum&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Singleton&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    INSTANCE;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;whateverMethod&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;登记式静态内部类&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#登记式静态内部类&#34;&gt;#&lt;/a&gt; 登记式 / 静态内部类&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;描述：&lt;/strong&gt; 这种方式能达到双检锁方式一样的功效，但实现更简单。对静态域使用延迟初始化，应使用这种方式而不是双检锁方式。这种方式只适用于静态域的情况，双检锁方式可在实例域需要延迟初始化时使用。&lt;br&gt;
+这种方式同样利用了 classloader 机制来保证初始化 instance 时只有一个线程，它跟第 3 种方式不同的是：第 3 种方式只要 Singleton 类被装载了，那么 instance 就会被实例化（没有达到 lazy loading 效果），而这种方式是 Singleton 类被装载了，instance 不一定被初始化。因为 SingletonHolder 类没有被主动使用，只有通过显式调用 getInstance 方法时，才会显式装载 SingletonHolder 类，从而实例化 instance。想象一下，如果实例化 instance 很消耗资源，所以想让它延迟加载，另外一方面，又不希望在 Singleton 类加载时就实例化，因为不能确保 Singleton 类还可能在其他的地方被主动使用从而被加载，那么这个时候实例化 instance 显然是不合适的。这个时候，这种方式相比第 3 种方式就显得很合理。&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Singleton&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;SingletonHolder&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;type&#34;&gt;Singleton&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;INSTANCE&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Singleton&lt;/span&gt;();  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;Singleton&lt;/span&gt; &lt;span class=&#34;params&#34;&gt;()&lt;/span&gt;&amp;#123;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;final&lt;/span&gt; Singleton &lt;span class=&#34;title function_&#34;&gt;getInstance&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; SingletonHolder.INSTANCE;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/47333.html</guid>
+            <title>Java开发遇见的陌生含义</title>
+            <link>https://www.naraci.top/post/47333.html</link>
+            <category term="Java" scheme="https://www.naraci.top/categories/Java/" />
+            <category term="Java" scheme="https://www.naraci.top/tags/Java/" />
+            <pubDate>Fri, 21 Jul 2023 13:10:46 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;pom是什么&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pom是什么&#34;&gt;#&lt;/a&gt; pom 是什么？&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;pom是指`Project object Model`项目对象模型，用于描述项目配置信息。它可以自动化管理项目的依赖，编译，测试，打包等任务。它位于项目根目录。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;pomxml文件具有以下主要用途&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pomxml文件具有以下主要用途&#34;&gt;#&lt;/a&gt; pom.xml 文件具有以下主要用途：&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;定义项目信息：在 pom.xml 中，你可以定义项目的名称、版本号、描述等基本信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;管理项目依赖：你可以在 pom.xml 中声明项目所依赖的第三方库或其他模块，Maven 将自动下载并管理这些依赖。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置插件：Maven 通过插件来执行各种任务，如编译、测试、打包等。pom.xml 中可以配置这些插件的设置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设置构建规则：你可以在 pom.xml 中定义项目的构建规则，例如编译时需要执行哪些操作，如何打包项目等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;对于新手来说以下是一些建议&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#对于新手来说以下是一些建议&#34;&gt;#&lt;/a&gt; 对于新手来说，以下是一些建议：&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;了解基本结构：学习 pom.xml 文件的基本结构和标签含义，这对于理解和配置 Maven 项目至关重要。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;注意依赖管理：合理管理项目的依赖非常重要。确保依赖项的版本与你的项目兼容，并尽量避免使用过多的不必要依赖。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;阅读文档：Maven 有丰富的文档和社区资源。在遇到问题时，优先查阅相关文档和搜索解决方案，这将帮助你更快地解决问题。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用版本控制：将 pom.xml 纳入版本控制系统（如 Git），确保在团队协作时项目配置的一致性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;注意继承和聚合：Maven 支持项目继承和聚合特性。理解这些特性的作用和用法，可以让你更好地组织复杂的项目结构。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;小步调试：当对项目配置进行重大更改时，建议先进行小步调试，逐步验证每个更改，避免一次性引入多个问题。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;注意 Maven 生命周期：了解 Maven 的构建生命周期和各个阶段的执行顺序，这有助于理解构建过程和插件执行顺序。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;常用的标签&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常用的标签&#34;&gt;#&lt;/a&gt; 常用的标签&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;project&amp;gt;&lt;/code&gt; ：定义整个项目的根标签，所有其他标签都嵌套在这个标签内。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;modelVersion&amp;gt;&lt;/code&gt; ：指定 POM 模型的版本，通常为 &amp;quot;4.0.0&amp;quot;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;groupId&amp;gt;&lt;/code&gt; ：定义项目所属的组织或团队的唯一标识符。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;artifactId&amp;gt;&lt;/code&gt; ：定义项目的唯一标识符，通常用于构建生成的文件名。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;version&amp;gt;&lt;/code&gt; ：定义项目的版本号。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;packaging&amp;gt;&lt;/code&gt; ：定义项目的打包类型，如 &amp;quot;jar&amp;quot;、“war”、&amp;quot;pom&amp;quot; 等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;name&amp;gt;&lt;/code&gt; ：定义项目的名称。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;description&amp;gt;&lt;/code&gt; ：定义项目的描述信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;dependencies&amp;gt;&lt;/code&gt; ：用于列出项目所依赖的其他库或模块。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;dependency&amp;gt;&lt;/code&gt; ：定义单个依赖项，包含 &lt;code&gt;&amp;lt;groupId&amp;gt;&lt;/code&gt; 、 &lt;code&gt;&amp;lt;artifactId&amp;gt;&lt;/code&gt;  和 &lt;code&gt;&amp;lt;version&amp;gt;&lt;/code&gt;  等子标签。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;properties&amp;gt;&lt;/code&gt; ：定义项目中使用到的属性，可用于简化版本号、路径等的重复定义。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;build&amp;gt;&lt;/code&gt; ：定义项目的构建配置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;plugins&amp;gt;&lt;/code&gt; ：用于列出项目中使用的插件配置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;plugin&amp;gt;&lt;/code&gt; ：定义单个插件，包含 &lt;code&gt;&amp;lt;groupId&amp;gt;&lt;/code&gt; 、 &lt;code&gt;&amp;lt;artifactId&amp;gt;&lt;/code&gt;  和 &lt;code&gt;&amp;lt;version&amp;gt;&lt;/code&gt;  等子标签。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;repositories&amp;gt;&lt;/code&gt; ：用于配置项目的依赖仓库。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;repository&amp;gt;&lt;/code&gt; ：定义单个依赖仓库，包含 URL 等信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;dependencyManagement&amp;gt;&lt;/code&gt; ：用于集中管理项目的依赖版本，让子项目继承统一的版本号。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;parent&amp;gt;&lt;/code&gt; ：用于定义当前项目的父项目，继承父项目的配置信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/9872.html</guid>
+            <title>Git指令总结</title>
+            <link>https://www.naraci.top/post/9872.html</link>
+            <category term="Git" scheme="https://www.naraci.top/categories/Git/" />
+            <category term="Git" scheme="https://www.naraci.top/tags/Git/" />
+            <pubDate>Wed, 19 Jul 2023 22:47:02 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#命令&#34;&gt;#&lt;/a&gt; 命令&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;示意&lt;/th&gt;
+&lt;th&gt;git 命令&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;使用 git 对文件初始化&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;git init&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;告诉 git ，你要对哪些文件进行存档操作，将对应的文件添加到对应的暂存区&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;git add &amp;lt;file&amp;gt;&lt;/code&gt; , 示例： &lt;code&gt;git add test.txt&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;添加的暂存区之后让 master 管理员，帮我们做个存档，生成一个存档记录&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;git commit -m &amp;lt;message&amp;gt;&lt;/code&gt;  ，示例  &lt;code&gt;git commit -m &lt;/code&gt; 实现了网站登录功能&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;有多个存档记录的时候，在各个记录存档之间切换&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;git reset —hard commit_id&lt;/code&gt; ,commit_id 是对应的存档记录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;git 帮你召唤一个名叫 fixbug 的新档案管理员&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;git checkout -b &amp;lt;name&amp;gt;&lt;/code&gt;  或者 &lt;code&gt;git switch -c &amp;lt;name&amp;gt;&lt;/code&gt; ，示例： &lt;code&gt;git checkout -b fixbug&lt;/code&gt;  「创建 + 切换分支」&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;切换到新的分支 fixbug&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;git checkout &amp;lt;name&amp;gt;&lt;/code&gt;  或者 &lt;code&gt;git switch &amp;lt;name&amp;gt;&lt;/code&gt; ，示例： &lt;code&gt;git checkout fixbug&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;切换回 master 分支，然后把 develop 分支合并起来&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;git checkout master``git merge develop&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;在 develop 分支开发新功能，发现我的网站上有个 bug，切换到 master 分支，然后在 master 分支新建一个 bugfix 的分支&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;git checkout master``git checkout -b bugfix&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;修复完 bug，切换回 master 分支，再把 bugfix 分支合并过来&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;git checkout master&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;git merge bugfix&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;常用的git命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常用的git命令&#34;&gt;#&lt;/a&gt; 常用的 git 命令&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git clone &amp;lt;git@github.com&amp;gt;:xxxx&lt;/code&gt; ，下载仓库&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git init&lt;/code&gt; ，初始化本地仓库 .git&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git status -sb&lt;/code&gt; ，显示当前所有文件的状态&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git add 文件路径&lt;/code&gt; ，用来将变动加到暂存区&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git commit -m &amp;quot;信息&amp;quot;&lt;/code&gt; ，用来正式提交变动，提交至 .git 仓库&lt;/li&gt;
+&lt;li&gt;如果有新的变动，我们只需要依次执行 git add xxx 和 git commit -m ‘xxx’ 两个命令即可。先 add 再 commit，行了，你学会 git 了。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git log&lt;/code&gt;  查看变更历史&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git pull&lt;/code&gt;  取回远程主机某个分支的更新，再与本地的指定分支合并&lt;/li&gt;
+&lt;li&gt;查看分支： &lt;code&gt;git branch&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;创建分支： &lt;code&gt;git branch &amp;lt;name&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;切换分支： &lt;code&gt;git checkout &amp;lt;name&amp;gt;&lt;/code&gt;  或者 &lt;code&gt;git switch &amp;lt;name&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;创建 + 切换分支： &lt;code&gt;git checkout -b &amp;lt;name&amp;gt;&lt;/code&gt;  或者 &lt;code&gt;git switch -c &amp;lt;name&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;合并某分支到当前分支： &lt;code&gt;git merge &amp;lt;name&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;删除分支： &lt;code&gt;git branch -d &amp;lt;name&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;– 其余待补充 –&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/61264.html</guid>
+            <title>PHP面向对象梳理笔记</title>
+            <link>https://www.naraci.top/post/61264.html</link>
+            <category term="PHP" scheme="https://www.naraci.top/categories/PHP/" />
+            <category term="PHP" scheme="https://www.naraci.top/tags/PHP/" />
+            <pubDate>Thu, 13 Apr 2023 16:29:14 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
+&lt;p&gt;专业课本上写的面向对象实例没有清晰明了的概括出来，代码参杂混乱让人实在是摸不出头脑这时候就该面向浏览器的编程学习了。&lt;/p&gt;
+&lt;h2 id=&#34;对象的三个特性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#对象的三个特性&#34;&gt;#&lt;/a&gt; 对象的三个特性：&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;摘自：&lt;/strong&gt; &lt;code&gt;[什么是PHP面向对象 - php完全自学手册 - php中文网手册]&lt;/code&gt; (&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cucGhwLmNuL3BocC9waHAtb29wLmh0bWw=&#34;&gt;https://www.php.cn/php/php-oop.html&lt;/span&gt;)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对象的行为：如拿过来，放下等就是行为。&lt;/li&gt;
+&lt;li&gt;对象的形态：如颜色，尺寸，外型。&lt;/li&gt;
+&lt;li&gt;对象的表示：对象的表示相当于身份证，具体区分在相同的行为于状态下有什么不同。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;面向对象的内容&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#面向对象的内容&#34;&gt;#&lt;/a&gt; 面向对象的内容&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;类 ：定义了一件事物的抽象特点。类的定义包含了数据的形式以及对数据的操作。&lt;/li&gt;
+&lt;li&gt;对象：是类的实例 （ &lt;code&gt;根据关键字new可以实例化对象&lt;/code&gt; ）&lt;/li&gt;
+&lt;li&gt;成员变量 ： 定义在类的内部的变量。该变量的值是对外不可见的，但是可以通过成员函数访问，在类被实例化对象后该变量可称为对象的属性、&lt;/li&gt;
+&lt;li&gt;成员函数 ： 定义在类的内部，可以用于访问对象的数据。&lt;/li&gt;
+&lt;li&gt;继承 ： 继承性是子类自动共享父类数据结构的方法和机制，这是类之间的一种关系。在定义和实现一个类的时候，可以在一个已经存在的类的基础之上类进行，把这个已经存在的类所定义的内容作为自己的内容，并加入若干新的内容、&lt;/li&gt;
+&lt;li&gt;父类 ： 一个类被其他类继承，可以将该类称之为父类或者基类，或超类。&lt;/li&gt;
+&lt;li&gt;子类 ： 一个继承其他类为子类，也可称之为派生类。&lt;/li&gt;
+&lt;li&gt;多态 ： 多态性是指相同的操作或函数，过程可作用多种类型的对象并获得不同的效果。不同的对象，收到同一消息可以产生不同的结果，这种现象称为多态性。&lt;/li&gt;
+&lt;li&gt;重载 ： 简单说，就是函数或者方法有同样的名称，但是参数列表不相同的情形，这样的同名不同参数的函数或者方法之间，互相称之为重载函数或者方法。&lt;/li&gt;
+&lt;li&gt;抽象性 ： 抽象性是指将具有一致的数据结构（属性）和行为（操作）的对象抽象成类。一个类就是这样一种抽象，它反映了与应用有关的重要性质，而忽略其他一些无关内容。任何类的划分都是主观的，但必须与具体的应用有关。&lt;/li&gt;
+&lt;li&gt;封装 ： 封装是指将现实世界中存在的某个客体的属性与行为绑定在一起，并放置在一个逻辑单元内。&lt;/li&gt;
+&lt;li&gt;构造函数 ： 主要用来在创建对象时初始化对象， 即为对象成员变量赋初始值，总与 new 运算符一起使用在创建对象的语句中。&lt;/li&gt;
+&lt;li&gt;析构函数 ： 析构函数 (destructor) 与构造函数相反，当对象结束其生命周期时（例如对象所在的函数已调用完毕），系统自动执行析构函数。析构函数往往用来做 &amp;quot;清理善后&amp;quot; 的工作（例如在建立对象时用 new 开辟了一片内存空间，应在退出前在析构函数中用 delete 释放）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;语法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#语法&#34;&gt;#&lt;/a&gt; 语法&lt;/h3&gt;
+&lt;h4 id=&#34;创建定义一个类&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#创建定义一个类&#34;&gt;#&lt;/a&gt; 创建定义一个类&lt;/h4&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;&amp;lt;?php&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;class&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;car&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/*成员变量*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; color;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; carname;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/*成员函数*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;setColor&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$par&lt;/span&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;color = &lt;span class=&#34;variable&#34;&gt;$par&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;getColor&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;color;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;setCarname&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$par&lt;/span&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;carname = &lt;span class=&#34;variable&#34;&gt;$par&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;getCarname&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;carname;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$this 是自身的对象&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;传参和访问对象里&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$car&lt;/span&gt; = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; car;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$car&lt;/span&gt;-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;setCarname&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;bwm&amp;quot;&lt;/span&gt;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$car&lt;/span&gt;-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;setColor&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;red&amp;quot;&lt;/span&gt;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$car&lt;/span&gt;-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;getColor&lt;/span&gt;();  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$car&lt;/span&gt;-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;getCarname&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;构造函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#构造函数&#34;&gt;#&lt;/a&gt; 构造函数&lt;/h4&gt;
+&lt;p&gt;构造函数 ，是一种特殊的方法。主要用来在创建对象时初始化对象， 即为对象成员变量赋初始值，总与 new 运算符一起使用在创建对象的语句中。&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;class&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;people&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//    成员变量  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$name&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$age&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;__construct&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$Name&lt;/span&gt;,&lt;span class=&#34;variable&#34;&gt;$Age&lt;/span&gt;&lt;/span&gt;)  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;    &lt;/span&gt;&amp;#123;        &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;name = &lt;span class=&#34;variable&#34;&gt;$Name&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;age = &lt;span class=&#34;variable&#34;&gt;$Age&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//    成员函数  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;setName&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$par&lt;/span&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;name = &lt;span class=&#34;variable&#34;&gt;$par&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;getName&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;name.PHP_EOL;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;setAge&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$par&lt;/span&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;age = &lt;span class=&#34;variable&#34;&gt;$par&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;getAge&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;age.PHP_EOL;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//实例化对象  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$pep&lt;/span&gt; = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title function_ invoke__&#34;&gt;people&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;zhaoyu&amp;quot;&lt;/span&gt;,&lt;span class=&#34;string&#34;&gt;&amp;quot;21&amp;quot;&lt;/span&gt;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//调用成员函数  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$pep&lt;/span&gt;-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;getName&lt;/span&gt;();  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$pep&lt;/span&gt;-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;getAge&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;可以看出构造函数和上面普通函数不同的是直接就可以在 new 方法里直接传参省去 set 方法&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;析构函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#析构函数&#34;&gt;#&lt;/a&gt; 析构函数&lt;/h4&gt;
+&lt;p&gt;析构函数 (destructor) 与构造函数相反，当对象结束其生命周期时（例如对象所在的函数已调用完毕），系统自动执行析构函数。&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/*析构函数语法  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;viod_destruct(void);*/&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;class&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;Xigouhanshu&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;__construct&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;)  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;    &lt;/span&gt;&amp;#123;        &lt;span class=&#34;keyword&#34;&gt;print&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;quot;构造函数\n&amp;quot;&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;name = &lt;span class=&#34;string&#34;&gt;&amp;quot;Xigouhanshu&amp;quot;&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;__destruct&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;)  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;    &lt;/span&gt;&amp;#123;        &lt;span class=&#34;comment&#34;&gt;// &lt;span class=&#34;doctag&#34;&gt;TODO:&lt;/span&gt; Implement __destruct() method.  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;print&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;quot;销毁&amp;quot;&lt;/span&gt;. &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;name . &lt;span class=&#34;string&#34;&gt;&amp;quot;\n&amp;quot;&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$object&lt;/span&gt; = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Xigouhanshu&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;继承&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#继承&#34;&gt;#&lt;/a&gt; 继承&lt;/h4&gt;
+&lt;p&gt;PHP 使用关键字 extends 来继承一个类 (父类)，PHP 不支持多继承，格式如下：&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/*代码格式:  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;class child extends parent &amp;#123;  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;&amp;#125;*/&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//引入父类文件  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;quot;../类与对象/main.php&amp;quot;&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;class&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;child&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;car&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$category&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;setCate&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$par&lt;/span&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;category = &lt;span class=&#34;variable&#34;&gt;$par&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;getCate&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;category . PHP_EOL;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$test&lt;/span&gt; = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title function_ invoke__&#34;&gt;child&lt;/span&gt;();  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$test&lt;/span&gt;-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;setColor&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;yellow&amp;quot;&lt;/span&gt;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$test&lt;/span&gt;-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;getColor&lt;/span&gt;();  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$test&lt;/span&gt;-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;setCate&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;pen&amp;quot;&lt;/span&gt;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$test&lt;/span&gt;-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;getCate&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;上面父类引用的是上面定义类的父类通过继承父类可以通过子类来调用父类的方法&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;方法重载&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#方法重载&#34;&gt;#&lt;/a&gt; 方法重载&lt;/h4&gt;
+&lt;p&gt;如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法的覆盖（override），也称为方法的重写。&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 引入父类文件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;quot;../类与对象/main.php&amp;quot;&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;class&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;childs&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;car&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;getColor&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;color . PHP_EOL;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;color;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$test&lt;/span&gt; = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title function_ invoke__&#34;&gt;childs&lt;/span&gt;();  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$test&lt;/span&gt;-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;setColor&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;black&amp;quot;&lt;/span&gt;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$test&lt;/span&gt;-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;getColor&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;上面可以明确看到在子类方法中改写父类方法&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;访问控制&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#访问控制&#34;&gt;#&lt;/a&gt; 访问控制&lt;/h4&gt;
+&lt;p&gt;PHP 对属性或方法的访问控制，是通过在前面添加关键字 public（公有），protected（受保护）或 private（私有）来实现的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;public（公有）：公有的类成员可以在任何地方被访问。&lt;/li&gt;
+&lt;li&gt;protected（受保护）：受保护的类成员则可以被其自身以及其子类和父类访问。&lt;/li&gt;
+&lt;li&gt;private（私有）：私有的类成员则只能被其定义所在的类访问。&lt;br&gt;
+&lt;strong&gt;属性访问控制&lt;/strong&gt;&lt;br&gt;
+类属性必须定义为公有，受保护，私有之一。如果用 var 定义，则被视为公有。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;40&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * Define MyClass&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;class&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;MyClass&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;class&#34;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$public &lt;/span&gt;= &lt;span class=&#34;string&#34;&gt;&amp;#x27;Public&amp;#x27;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;protected&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$protected &lt;/span&gt;= &lt;span class=&#34;string&#34;&gt;&amp;#x27;Protected&amp;#x27;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$private &lt;/span&gt;= &lt;span class=&#34;string&#34;&gt;&amp;#x27;Private&amp;#x27;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;printHello&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;    &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;&lt;span class=&#34;keyword&#34;&gt;protected&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;&lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$obj &lt;/span&gt;= &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;title function_ invoke__&#34;&gt; MyClass&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$obj&lt;/span&gt;-&amp;gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt;; &lt;span class=&#34;comment&#34;&gt;// 这行能被正常执行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$obj&lt;/span&gt;-&amp;gt;&lt;span class=&#34;keyword&#34;&gt;protected&lt;/span&gt;; &lt;span class=&#34;comment&#34;&gt;// 这行会产生一个致命错误&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$obj&lt;/span&gt;-&amp;gt;&lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt;; &lt;span class=&#34;comment&#34;&gt;// 这行也会产生一个致命错误&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$obj&lt;/span&gt;-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;printHello&lt;/span&gt;(); &lt;span class=&#34;comment&#34;&gt;// 输出 Public、Protected 和 Private&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * Define MyClass2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;class&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;MyClass2&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;MyClass&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;class&#34;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;// 可以对 public 和 protected 进行重定义，但 private 而不能&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;protected&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$protected &lt;/span&gt;= &lt;span class=&#34;string&#34;&gt;&amp;#x27;Protected2&amp;#x27;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;printHello&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;    &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;&lt;span class=&#34;keyword&#34;&gt;protected&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;&lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$obj2 &lt;/span&gt;= &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;title function_ invoke__&#34;&gt; MyClass2&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$obj2&lt;/span&gt;-&amp;gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt;; &lt;span class=&#34;comment&#34;&gt;// 这行能被正常执行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$obj2&lt;/span&gt;-&amp;gt;&lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt;; &lt;span class=&#34;comment&#34;&gt;// 未定义 private&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$obj2&lt;/span&gt;-&amp;gt;&lt;span class=&#34;keyword&#34;&gt;protected&lt;/span&gt;; &lt;span class=&#34;comment&#34;&gt;// 这行会产生一个致命错误&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$obj2&lt;/span&gt;-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;printHello&lt;/span&gt;(); &lt;span class=&#34;comment&#34;&gt;// 输出 Public、Protected2 和 Undefined&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;接口&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#接口&#34;&gt;#&lt;/a&gt; 接口&lt;/h4&gt;
+&lt;p&gt;使用接口（interface），可以指定某个类必须实现哪些方法，但不需要定义这些方法的具体内容。&lt;/p&gt;
+&lt;p&gt;接口是通过 &lt;strong&gt;interface&lt;/strong&gt; 关键字来定义的，就像定义一个标准的类一样，但其中定义所有的方法都是空的。&lt;/p&gt;
+&lt;p&gt;接口中定义的所有方法都必须是公有，这是接口的特性。&lt;/p&gt;
+&lt;p&gt;要实现一个接口，使用 &lt;strong&gt;implements&lt;/strong&gt; 操作符。类中必须实现接口中定义的所有方法，否则会报一个致命错误。类可以实现多个接口，用逗号来分隔多个接口的名称。&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 声明一个接口  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;class&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;interface&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;Bus&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;getByBus&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;)&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;class&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;people&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;implements&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;Bus&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;getByBus&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;)  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;    &lt;/span&gt;&amp;#123;        &lt;span class=&#34;comment&#34;&gt;// &lt;span class=&#34;doctag&#34;&gt;TODO:&lt;/span&gt; Implement getByBus() method.  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;array&lt;/span&gt;(  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;string&#34;&gt;&amp;quot;red bus&amp;quot;&lt;/span&gt;,  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;string&#34;&gt;&amp;quot;black bus&amp;quot;&lt;/span&gt;,  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;string&#34;&gt;&amp;quot;white bus&amp;quot;&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        );  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$test1&lt;/span&gt; = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title function_ invoke__&#34;&gt;people&lt;/span&gt;();  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;var_dump&lt;/span&gt;(&lt;span class=&#34;variable&#34;&gt;$test1&lt;/span&gt;-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;getByBus&lt;/span&gt;());&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;调用父类构造方法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#调用父类构造方法&#34;&gt;#&lt;/a&gt; 调用父类构造方法&lt;/h4&gt;
+&lt;p&gt;PHP 不会再子类的构造方法中自动调用父类的构造方法。要执行父类的构造方法，需要再子类的构造方法中 &lt;code&gt;parent::__construct()&lt;/code&gt; .&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;class&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;baseClass&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;__construct&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;print&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;quot;BaseClass 类中构造方法&amp;quot;&lt;/span&gt; . &lt;span class=&#34;string&#34;&gt;&amp;quot;\n&amp;quot;&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;class&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;SubClass&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;baseClass&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;__construct&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;)  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;    &lt;/span&gt;&amp;#123;        &lt;span class=&#34;built_in&#34;&gt;parent&lt;/span&gt;::&lt;span class=&#34;title function_ invoke__&#34;&gt;__construct&lt;/span&gt;(); &lt;span class=&#34;comment&#34;&gt;// 子类构造方法不能自动调用父类的构造方法  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;print&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;quot;SubClass 类中的方法&amp;quot;&lt;/span&gt;. &lt;span class=&#34;string&#34;&gt;&amp;quot;\n&amp;quot;&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;class&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;OtherSubClass&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;baseClass&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//    继承baseClass 构造方法  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 调用 BaseClass 构造方法  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$obj&lt;/span&gt; = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title function_ invoke__&#34;&gt;baseClass&lt;/span&gt;();  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 调用 BaseClass、SubClass 构造方法  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$obj&lt;/span&gt; = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;SubClass&lt;/span&gt;();  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 调用 BaseClass 构造方法  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable&#34;&gt;$obj&lt;/span&gt; = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;OtherSubClass&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/19644.html</guid>
+            <title>微信小程序开发自定义页面跳转报错navigateTo:fail page xxx is not found</title>
+            <link>https://www.naraci.top/post/19644.html</link>
+            <category term="微信小程序开发" scheme="https://www.naraci.top/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/" />
+            <category term="微信小程序开发" scheme="https://www.naraci.top/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/" />
+            <pubDate>Wed, 12 Apr 2023 09:38:04 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;前言&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h2&gt;
+&lt;p&gt;今天在写页面跳转的时候调试点击时总是提示报错信息&lt;br&gt;
+&lt;img data-src=&#34;https://raw.githubusercontent.com/NAILIANGCHI/image-bed/main/202304051715989.png&#34; alt=&#34;&#34;&gt;&lt;br&gt;
+试了好多次都不行，纳闷半天路径也不可能错，都说按照自动补全的在面向搜索引擎和官方文档半天，发现了头绪，两个一对比原来是自动补全给我加了个文件后缀名。&lt;/p&gt;
+&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//官方文档:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;wx.&lt;span class=&#34;property&#34;&gt;navigateTo&lt;/span&gt;:(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;attr&#34;&gt;url&lt;/span&gt;:&lt;span class=&#34;string&#34;&gt;&amp;#x27;/pages/test/test&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://raw.githubusercontent.com/NAILIANGCHI/image-bed/main/202304051718529.png&#34; alt=&#34;&#34;&gt;&lt;br&gt;
+说实话，这样很鸡肋跳转到这个页面你就加上呗不加你自动补全这个也就去掉😥&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/5856.html</guid>
+            <title>JavaScript函数用法</title>
+            <link>https://www.naraci.top/post/5856.html</link>
+            <category term="JavaScript" scheme="https://www.naraci.top/categories/JavaScript/" />
+            <category term="JavaScript" scheme="https://www.naraci.top/tags/JavaScript/" />
+            <pubDate>Sat, 17 Dec 2022 23:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;javascript-函数语法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#javascript-函数语法&#34;&gt;#&lt;/a&gt; Javascript 函数语法&lt;/h1&gt;
+&lt;p&gt;函数是由事件驱动的或者当它被调用时执行的可重复使用的代码块。&lt;/p&gt;
+&lt;p&gt;函数包裹在花括号的代码块，前面使用函数名 funciton&lt;/p&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;hanshu&lt;/span&gt; ()&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;//执行代码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;innerHTML = hanshu    &lt;span class=&#34;comment&#34;&gt;//在js文件这么写可以在HTML导入引用js文件即可&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Javascript 对大小写敏感。关键词 function 必须事小写的，并且必须以与函数名称相同的大小写来调用函数。&lt;/p&gt;
+&lt;h1 id=&#34;调用带参数的函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#调用带参数的函数&#34;&gt;#&lt;/a&gt; 调用带参数的函数&lt;/h1&gt;
+&lt;p&gt;在调用函数时，可以向其传递值，这些值被称为参数。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;例:myfunction (argumentl,argument2)&lt;br&gt;
+ 变量和参数必须按一致顺序出现。第一个变量对应的是第一个被传递的参数的值。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//HTML文件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;button onclick=&lt;span class=&#34;string&#34;&gt;&amp;quot;hanshu(&amp;#x27;naraci&amp;#x27;,&amp;#x27;student&amp;#x27;)&amp;gt;点我&amp;lt;/button&amp;gt;&amp;quot;&lt;/span&gt;  &lt;span class=&#34;comment&#34;&gt;//参数必须加单引号&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//js文件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;myfunction&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;name,job&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;title function_&#34;&gt;alert&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;欢迎&amp;quot;&lt;/span&gt;+name+&lt;span class=&#34;string&#34;&gt;&amp;quot;的&amp;quot;&lt;/span&gt;+&lt;span class=&#34;string&#34;&gt;&amp;quot;访问&amp;quot;&lt;/span&gt;+&lt;span class=&#34;string&#34;&gt;&amp;quot;他是&amp;quot;&lt;/span&gt;+job);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/59758.html</guid>
+            <title>JavaScript对象用法</title>
+            <link>https://www.naraci.top/post/59758.html</link>
+            <category term="JavaScript" scheme="https://www.naraci.top/categories/JavaScript/" />
+            <category term="JavaScript" scheme="https://www.naraci.top/tags/JavaScript/" />
+            <pubDate>Sat, 17 Dec 2022 23:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;javascript对象&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#javascript对象&#34;&gt;#&lt;/a&gt; Javascript 对象&lt;/h1&gt;
+&lt;p&gt;在 JavaScript 中所有事物都是对象。&lt;br&gt;
+对象也是一个变量，但对象可以包含多个值 (多个变量)，每个值以 &lt;code&gt;name:value&lt;/code&gt;  对呈现&lt;/p&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; car = &amp;#123;&lt;span class=&#34;attr&#34;&gt;name&lt;/span&gt;:&lt;span class=&#34;string&#34;&gt;&amp;quot;Fiat&amp;quot;&lt;/span&gt;, &lt;span class=&#34;attr&#34;&gt;model&lt;/span&gt;:&lt;span class=&#34;number&#34;&gt;500&lt;/span&gt;, &lt;span class=&#34;attr&#34;&gt;color&lt;/span&gt;:&lt;span class=&#34;string&#34;&gt;&amp;quot;white&amp;quot;&lt;/span&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以上三个值赋予变量 car&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;对象定义&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#对象定义&#34;&gt;#&lt;/a&gt; 对象定义&lt;/h1&gt;
+&lt;p&gt;可以使用字符来定义和创建 JavaScript 对象：&lt;/p&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; person = &amp;#123;&lt;span class=&#34;attr&#34;&gt;firstName&lt;/span&gt;:&lt;span class=&#34;string&#34;&gt;&amp;quot;John&amp;quot;&lt;/span&gt;, &lt;span class=&#34;attr&#34;&gt;lastName&lt;/span&gt;:&lt;span class=&#34;string&#34;&gt;&amp;quot;Doe&amp;quot;&lt;/span&gt;, &lt;span class=&#34;attr&#34;&gt;age&lt;/span&gt;:&lt;span class=&#34;number&#34;&gt;50&lt;/span&gt;, &lt;span class=&#34;attr&#34;&gt;eyeColor&lt;/span&gt;:&lt;span class=&#34;string&#34;&gt;&amp;quot;blue&amp;quot;&lt;/span&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//或者&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; person = &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;firstName&lt;/span&gt;:&lt;span class=&#34;string&#34;&gt;&amp;quot;John&amp;quot;&lt;/span&gt;,  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;lastName&lt;/span&gt;:&lt;span class=&#34;string&#34;&gt;&amp;quot;Doe&amp;quot;&lt;/span&gt;,  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;age&lt;/span&gt;:&lt;span class=&#34;number&#34;&gt;50&lt;/span&gt;,  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;eyeColor&lt;/span&gt;:&lt;span class=&#34;string&#34;&gt;&amp;quot;blue&amp;quot;&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;定义 JavaScript 对象可以跨越多行，空格换行不是必须的：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;对象属性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#对象属性&#34;&gt;#&lt;/a&gt; 对象属性&lt;/h1&gt;
+&lt;p&gt;可以说是”JavaScript“对象是变量的容器。&lt;br&gt;
+但是，我们通常认为”JavaScript” 对象是键值对的容器。&lt;br&gt;
+键值对通常写法为 &lt;code&gt;name:value&lt;/code&gt;  (键与值以冒号分割)。&lt;br&gt;
+键值对在 JavaScript 对象通常称为&lt;em&gt;&lt;strong&gt;对象属性&lt;/strong&gt;&lt;/em&gt;&lt;br&gt;
+对象键值对的写法类似于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PHP 中关联的数组&lt;/li&gt;
+&lt;li&gt;Python 中的字典&lt;/li&gt;
+&lt;li&gt;C 语言中的哈希表&lt;/li&gt;
+&lt;li&gt;Java 中的哈希映射&lt;/li&gt;
+&lt;li&gt;Ruby 和 perl 中的哈希表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;访问对象属性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#访问对象属性&#34;&gt;#&lt;/a&gt; 访问对象属性&lt;/h1&gt;
+&lt;p&gt;第一种：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;person.lastName&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; person = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    firstName : &lt;span class=&#34;string&#34;&gt;&amp;quot;John&amp;quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    lastName : &lt;span class=&#34;string&#34;&gt;&amp;quot;Doe&amp;quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    id : &lt;span class=&#34;number&#34;&gt;5566&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable language_&#34;&gt;document&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;getElementById&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;demo&amp;quot;&lt;/span&gt;).&lt;span class=&#34;property&#34;&gt;innerHTML&lt;/span&gt; =&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	person.&lt;span class=&#34;property&#34;&gt;firstName&lt;/span&gt; + &lt;span class=&#34;string&#34;&gt;&amp;quot; &amp;quot;&lt;/span&gt; + person.&lt;span class=&#34;property&#34;&gt;lastName&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;第二种：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;‘person[“lastName”]’&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; person = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;firstName&lt;/span&gt;: &lt;span class=&#34;string&#34;&gt;&amp;quot;John&amp;quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    lastName : &lt;span class=&#34;string&#34;&gt;&amp;quot;Doe&amp;quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    id : &lt;span class=&#34;number&#34;&gt;5566&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    fullName : &lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;) &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;       &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;variable language_&#34;&gt;this&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;firstName&lt;/span&gt; + &lt;span class=&#34;string&#34;&gt;&amp;quot; &amp;quot;&lt;/span&gt; + &lt;span class=&#34;variable language_&#34;&gt;this&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;lastName&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable language_&#34;&gt;document&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;getElementById&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;demo&amp;quot;&lt;/span&gt;).&lt;span class=&#34;property&#34;&gt;innerHTML&lt;/span&gt; = person.&lt;span class=&#34;title function_&#34;&gt;fullName&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;对象的方法定义了一个函数，并作为对象的属性存储。&lt;/p&gt;
+&lt;p&gt;对象方法通过添加 () 调用 (作为一个函数)。&lt;/p&gt;
+&lt;p&gt;该实例访问了 person 对象的 fullName () 方法:&lt;/p&gt;
+&lt;h1 id=&#34;访问对象方法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#访问对象方法&#34;&gt;#&lt;/a&gt; 访问对象方法&lt;/h1&gt;
+&lt;p&gt;可以使用以下语法创建对象方法：&lt;/p&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;methodName : &lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;//代码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;实列&lt;/strong&gt;：可以使用以下语法访问对象方法：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;objectName:function() &amp;#123;&amp;#125;&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; person = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;firstName&lt;/span&gt;: &lt;span class=&#34;string&#34;&gt;&amp;quot;John&amp;quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    lastName : &lt;span class=&#34;string&#34;&gt;&amp;quot;Doe&amp;quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    id : &lt;span class=&#34;number&#34;&gt;5566&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    fullName : &lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;) &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;       &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;variable language_&#34;&gt;this&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;firstName&lt;/span&gt; + &lt;span class=&#34;string&#34;&gt;&amp;quot; &amp;quot;&lt;/span&gt; + &lt;span class=&#34;variable language_&#34;&gt;this&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;lastName&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;variable language_&#34;&gt;document&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;getElementById&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;demo&amp;quot;&lt;/span&gt;).&lt;span class=&#34;property&#34;&gt;innerHTML&lt;/span&gt; = person.&lt;span class=&#34;title function_&#34;&gt;fullName&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/4a3bb1da.html</guid>
+            <title>学习T签到接口</title>
+            <link>https://www.naraci.top/post/4a3bb1da.html</link>
+            <category term="Course" scheme="https://www.naraci.top/categories/Course/" />
+            <category term="Course" scheme="https://www.naraci.top/tags/Course/" />
+            <pubDate>Sat, 10 Dec 2022 23:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;接口&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#接口&#34;&gt;#&lt;/a&gt; 接口:&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;http://112.124.65.228:78/main.php?account=账号&amp;amp;password=密码&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;如何使用接口&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#如何使用接口&#34;&gt;#&lt;/a&gt; 如何使用接口？&lt;/h2&gt;
+&lt;p&gt;在 url 链接对应文字描述替换成你的参数点击访问即可！&lt;/p&gt;
+&lt;h3 id=&#34;如何让他全自动运行呢&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#如何让他全自动运行呢&#34;&gt;#&lt;/a&gt; 如何让他全自动运行呢？&lt;/h3&gt;
+&lt;p&gt;填写好参数后将 url 链接放至监控平台定时访 url 即可！&lt;br&gt;
+&lt;img data-src=&#34;http://image.naraci.top/2022/05/19/53bc5c5a81f22.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/f93b2adf.html</guid>
+            <title>网络爬虫--Python</title>
+            <link>https://www.naraci.top/post/f93b2adf.html</link>
+            <category term="Python" scheme="https://www.naraci.top/categories/Python/" />
+            <category term="Python" scheme="https://www.naraci.top/tags/Python/" />
+            <pubDate>Wed, 23 Nov 2022 23:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;库&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#库&#34;&gt;#&lt;/a&gt; 库&lt;/h1&gt;
+&lt;p&gt;request：自动爬取 HTML 页面，自动网络请求提交&lt;br&gt;
+ robots.txt: 网络爬虫排除标准&lt;br&gt;
+ beautiful soup：解析 HTML 页面&lt;br&gt;
+ Re: 正则表达式（用于提取需要的信息）&lt;/p&gt;
+&lt;h2 id=&#34;request方法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#request方法&#34;&gt;#&lt;/a&gt; request 方法&lt;/h2&gt;
+&lt;p&gt;requests.request (): 构造一个请求支撑以下各方法的基础方法&lt;br&gt;
+ requests.get (): 获取 HTML 网页的主要方法对应 HTTP 的 get&lt;br&gt;
+requests.head (): 获取 HTML 网页头部的信息方法对应 HTTP 的 head&lt;br&gt;
+requests.post (): 向 HTML 网页提交 post 请求方法，对应 HTTP 的 post&lt;br&gt;
+requests.put (): 向 HTML 提交 put 请求方法，对应 HTTP 的 put&lt;/p&gt;
+&lt;h3 id=&#34;对象属性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#对象属性&#34;&gt;#&lt;/a&gt; 对象属性&lt;/h3&gt;
+&lt;p&gt;r.status_code: HTTP 请求返回状态，200 表示成功，404 表示失败&lt;br&gt;
+ r.txt: HTTP 响应内容的字符串方式，即 url 对应的页面内容&lt;br&gt;
+ re.encoding: 从 HTTP header 中猜测的响应内容编码形式&lt;br&gt;
+ r.apparent_encoding: 从内容分析出的响应编码方式（备用编码）&lt;br&gt;
+r.content HTTP 响应内容的二进制形式&lt;/p&gt;
+&lt;h1 id=&#34;handler处理器的基本使用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#handler处理器的基本使用&#34;&gt;#&lt;/a&gt; handler 处理器的基本使用&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;获取 hanlder 的方法&lt;br&gt;
+ opener = urllib.request.HttoHandler ()&lt;/li&gt;
+&lt;li&gt;获取 opener 对象&lt;br&gt;
+ opener = urllib.requst.build_opener (handler)&lt;/li&gt;
+&lt;li&gt;调用 open 方法&lt;br&gt;
+ response = opener.open (request)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;content = response.read().decode(‘utf-8’)&lt;br&gt;
+(可以使用代理)&lt;/p&gt;
+&lt;h1 id=&#34;解析页面&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#解析页面&#34;&gt;#&lt;/a&gt; 解析页面&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;常用的三个方法&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Xpath        // 获取网页源码的部分数据&lt;/li&gt;
+&lt;li&gt;JsonPath    //&lt;/li&gt;
+&lt;li&gt;BeautifulSoup&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;1.Xapth&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;表达式&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;nodename&lt;/td&gt;
+&lt;td&gt;选取此节点所有节点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;/&lt;/td&gt;
+&lt;td&gt;从根节点选取。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;//&lt;/td&gt;
+&lt;td&gt;从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;.&lt;/td&gt;
+&lt;td&gt;选取当前节点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;…&lt;/td&gt;
+&lt;td&gt;选取当前节点的父节点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@&lt;/td&gt;
+&lt;td&gt;选取当前属性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;选取未知节点&lt;/strong&gt;&lt;br&gt;
+ XPath 通配符可用来选取位置的 XML 元素。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;通配符&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;匹配任何元素节点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@*&lt;/td&gt;
+&lt;td&gt;匹配任何属性节点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;node()&lt;/td&gt;
+&lt;td&gt;匹配任何类型的节点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/5911a52a.html</guid>
+            <title>Java打印乘法表</title>
+            <link>https://www.naraci.top/post/5911a52a.html</link>
+            <category term="Java" scheme="https://www.naraci.top/categories/Java/" />
+            <category term="Java" scheme="https://www.naraci.top/tags/Java/" />
+            <pubDate>Tue, 08 Nov 2022 23:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;package&lt;/span&gt; top.naraci.shenzhaoyu;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; class 九九乘法表 &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(String[] args)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; (&lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;; j &amp;lt;= &lt;span class=&#34;number&#34;&gt;9&lt;/span&gt;; j++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; (&lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;; i &amp;lt;= j; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            System.out.print(j+&lt;span class=&#34;string&#34;&gt;&amp;quot;*&amp;quot;&lt;/span&gt;+i+&lt;span class=&#34;string&#34;&gt;&amp;quot;=&amp;quot;&lt;/span&gt;+(j*i)+&lt;span class=&#34;string&#34;&gt;&amp;quot;\t&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            System.out.println();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.bmp.ovh/imgs/2021/12/6543c8283999b67b.png&#34; alt=&#34; &#34;&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/37627.html</guid>
+            <title>网络爬虫_写真网实战</title>
+            <link>https://www.naraci.top/post/37627.html</link>
+            <category term="Python" scheme="https://www.naraci.top/categories/Python/" />
+            <category term="Python" scheme="https://www.naraci.top/tags/Python/" />
+            <pubDate>Tue, 08 Nov 2022 23:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;网络爬虫写真网实战，请勿大量爬取仅供参考学习&lt;br&gt;
+需要再文件位置创建 meitu 文件夹用于存放图片&lt;/p&gt;
+&lt;h1 id=&#34;代码&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#代码&#34;&gt;#&lt;/a&gt; 代码&lt;/h1&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;66&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;67&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;68&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;69&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;70&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;71&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;72&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;73&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;74&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;75&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;76&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;77&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;78&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;79&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;80&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;81&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;82&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;83&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;84&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;85&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;86&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;87&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;88&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# -*- coding: utf-8 -*-  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# @Time    : 2022/10/26 7:41  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# @Author  : Naraci  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# @File    : 写真优化重构版.py  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; parsel  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; requests  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;headers = &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;string&#34;&gt;&amp;#x27;User-Agent&amp;#x27;&lt;/span&gt;: &lt;span class=&#34;string&#34;&gt;&amp;#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 &amp;#x27;&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                  &lt;span class=&#34;string&#34;&gt;&amp;#x27;Safari/537.36 &amp;#x27;&lt;/span&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;url_request&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;url&lt;/span&gt;):  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    request = requests.get(url=url, headers=headers)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# 设置编码格式防止乱码  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    request.encoding = &lt;span class=&#34;string&#34;&gt;&amp;#x27;utf-8&amp;#x27;&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    html_text = request.text  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# 转换数据类型  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    parse_forats = parsel.Selector(html_text)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    parse_forats_list = parse_forats.xpath(&lt;span class=&#34;string&#34;&gt;&amp;#x27;//section//div//ul//span/text()&amp;#x27;&lt;/span&gt;).getall()[-&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;]  &lt;span class=&#34;comment&#34;&gt;# 取该页面总页数  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    num_list = [i &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; i &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; parse_forats_list &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;str&lt;/span&gt;.isdigit(i)]  &lt;span class=&#34;comment&#34;&gt;# Python isdigit() 方法检测字符串是否只由数字组成。返回True or False.  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    add_list = &lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; i &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; num_list:  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        add_list = add_list + i  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    number_end = &lt;span class=&#34;built_in&#34;&gt;int&lt;/span&gt;(add_list)  &lt;span class=&#34;comment&#34;&gt;# 转换成整数类型  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# 页面地址 https://www.wxept.com/qqmn/rbmn/page/2    html_url = url  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# 遍历每个页面地址  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; page &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;range&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;, number_end + &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;):  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; page == &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;:  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            request_url = html_url  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;else&lt;/span&gt;:  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            request_url = html_url + &lt;span class=&#34;string&#34;&gt;&amp;#x27;/page/&amp;#x27;&lt;/span&gt; + &lt;span class=&#34;built_in&#34;&gt;str&lt;/span&gt;(page)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;正在下载:&amp;#x27;&lt;/span&gt; + request_url + &lt;span class=&#34;string&#34;&gt;&amp;#x27;页面！&amp;#x27;&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;# for page_list in range(1, number_end + 1):  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        request_url.encode(&lt;span class=&#34;string&#34;&gt;&amp;#x27;utf-8&amp;#x27;&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        url_list = requests.get(url=request_url, headers=headers)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        selector = url_list.text  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        selector = parsel.Selector(selector)  &lt;span class=&#34;comment&#34;&gt;# 转换数据类型  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        content = selector.xpath(&lt;span class=&#34;string&#34;&gt;&amp;#x27;//div//div/article&amp;#x27;&lt;/span&gt;)  &lt;span class=&#34;comment&#34;&gt;# 获取所有需要的标签  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; article &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; content:  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            pic_title = article.xpath(&lt;span class=&#34;string&#34;&gt;&amp;#x27;./h2/a/text()&amp;#x27;&lt;/span&gt;).get()  &lt;span class=&#34;comment&#34;&gt;# 套图标题 用于命名文件夹  返回为对象属性需要用get取出来  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            pic_url = article.xpath(&lt;span class=&#34;string&#34;&gt;&amp;#x27;./h2/a/@href&amp;#x27;&lt;/span&gt;).get()  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;已将相册：&amp;#x27;&lt;/span&gt; + pic_title + &lt;span class=&#34;string&#34;&gt;&amp;#x27;添加到队列！&amp;#x27;&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;#         pic_url = &amp;#x27;https://www.wxept.com/8762.html&amp;#x27;  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# #         pic_url = &amp;#x27;https://www.wxept.com/8879.html&amp;#x27;            # 发送相册页面地址  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            response_pic = requests.get(url=pic_url, headers=headers).text  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;comment&#34;&gt;# 获取相册页面所有页数  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            selector_2 = parsel.Selector(response_pic)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            img_url = selector_2.xpath(&lt;span class=&#34;string&#34;&gt;&amp;#x27;//div/a/span&amp;#x27;&lt;/span&gt;).getall()[-&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;]  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            num_list = [i &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; i &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; img_url &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;str&lt;/span&gt;.isdigit(i)]  &lt;span class=&#34;comment&#34;&gt;# Python isdigit() 方法检测字符串是否只由数字组成。返回True or False.  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            add_list = &lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            number_list = pic_url.split(&lt;span class=&#34;string&#34;&gt;&amp;#x27;.html&amp;#x27;&lt;/span&gt;)[&lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;]  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;comment&#34;&gt;# # 遍历出所有页面  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; i &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; num_list:  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                add_list = add_list + i  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            number_end = &lt;span class=&#34;built_in&#34;&gt;int&lt;/span&gt;(add_list)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; page &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;range&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;, number_end + &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;):  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; page == &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;:  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                    request_html_url = number_list + &lt;span class=&#34;string&#34;&gt;&amp;#x27;.html&amp;#x27;&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;keyword&#34;&gt;else&lt;/span&gt;:  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                    request_html_url = number_list + &lt;span class=&#34;string&#34;&gt;&amp;#x27;.html/&amp;#x27;&lt;/span&gt; + &lt;span class=&#34;built_in&#34;&gt;str&lt;/span&gt;(page)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(request_html_url)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;comment&#34;&gt;#解析图片地址  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                response_pic = requests.get(url=request_html_url, headers=headers).text  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                selector_2 = parsel.Selector(response_pic)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                img_url = selector_2.xpath(&lt;span class=&#34;string&#34;&gt;&amp;#x27;//section//article//a/img/@src&amp;#x27;&lt;/span&gt;).getall()  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; pic_url &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; img_url:  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                    &lt;span class=&#34;comment&#34;&gt;# 发送图片链接请求，获取图片数据以二进制数据保存  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                    img_data = requests.get(url=pic_url, headers=headers).content  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                    &lt;span class=&#34;comment&#34;&gt;# 数据保存  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                    fil_name = pic_url.split(&lt;span class=&#34;string&#34;&gt;&amp;#x27;/&amp;#x27;&lt;/span&gt;)[-&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;]  &lt;span class=&#34;comment&#34;&gt;# 获取图片名字  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                    &lt;span class=&#34;keyword&#34;&gt;with&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;open&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;meitudownload\\&amp;#x27;&lt;/span&gt; + fil_name, mode=&lt;span class=&#34;string&#34;&gt;&amp;#x27;wb&amp;#x27;&lt;/span&gt;) &lt;span class=&#34;keyword&#34;&gt;as&lt;/span&gt; fp:  &lt;span class=&#34;comment&#34;&gt;# wb 二进制  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                        fp.write(img_data)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                        &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;下载完成:&amp;#x27;&lt;/span&gt; + fil_name)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; __name__ == &lt;span class=&#34;string&#34;&gt;&amp;#x27;__main__&amp;#x27;&lt;/span&gt;:  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;请在文件目录手动新建meitudownload目录&amp;#x27;&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;在下面网址复制url粘贴值下方：https://www.wxept.com/qqmn/&amp;#x27;&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    put_url = &lt;span class=&#34;built_in&#34;&gt;input&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;请输入正确分类页面url:&amp;#x27;&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# url = &amp;#x27;https://www.wxept.com/qqmn/dlmn&amp;#x27;  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    url = put_url  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    url_request(url)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;全部下载成功！&amp;#x27;&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;# 文件根目录手动创建meitu文件夹&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;文件下载&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#文件下载&#34;&gt;#&lt;/a&gt; 文件下载&lt;/h1&gt;
+&lt;p&gt;源代码和 exe 成品文件&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3Bhbi5uYXJhY2kudG9wL3MvWDN6czY=&#34;&gt;点击下载&lt;/span&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/21093.html</guid>
+            <title>网络Python用法速查</title>
+            <link>https://www.naraci.top/post/21093.html</link>
+            <category term="python" scheme="https://www.naraci.top/categories/python/" />
+            <category term="python" scheme="https://www.naraci.top/tags/python/" />
+            <pubDate>Mon, 07 Nov 2022 23:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;字符串高级&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字符串高级&#34;&gt;#&lt;/a&gt; 字符串高级&lt;/h1&gt;
+&lt;p&gt;字符串的常见操作&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;获取长度 ：len  len 函数可以获取字符串的长度&lt;/li&gt;
+&lt;li&gt;查找内容 ：find   查找指定内容在字符串中是否存在，如果存在就返回改内容在字符串中第一次出现的位置索引值，如果不存在返回 1&lt;/li&gt;
+&lt;li&gt;判断：startswith,endswith   判断字符串是不是以谁谁谁开头 / 结尾&lt;/li&gt;
+&lt;li&gt;计算出现的次数：count   返回 str 在 start 和 end 之间 在 mystr 里面出现的次数&lt;/li&gt;
+&lt;li&gt;替换内容：replace   替换字符的内容切割字符串&lt;/li&gt;
+&lt;li&gt;修改大小写： upper，lower   将字符串中的大小写互换&lt;/li&gt;
+&lt;li&gt;空格处理： strip    去空格&lt;/li&gt;
+&lt;li&gt;字符串拼接:  join   字符串拼接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;列表的高级&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#列表的高级&#34;&gt;#&lt;/a&gt; 列表的高级&lt;/h1&gt;
+&lt;p&gt;列表的增删改查&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;append: 在末尾添加元素&lt;/li&gt;
+&lt;li&gt;insert : 在指定位置插入元素&lt;/li&gt;
+&lt;li&gt;extend：合并两个列表&lt;/li&gt;
+&lt;li&gt;修改 ：通过下标来修改&lt;/li&gt;
+&lt;li&gt;del：根据下标删除&lt;/li&gt;
+&lt;li&gt;pop：删除最后一个元素&lt;/li&gt;
+&lt;li&gt;remov：根据元素的值删除元素&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;查找高级&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查找高级&#34;&gt;#&lt;/a&gt; 查找高级&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;in : 用法例子：if i in list ():    // 可以理解为 i 变量是否在 list 的里面（判断这个元素是否在某个列表中）&lt;/li&gt;
+&lt;li&gt;not in : 和上面的 in 是相反的意思是相反的意思用法和 in 一样&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;切片&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#切片&#34;&gt;#&lt;/a&gt; 切片&lt;/h1&gt;
+&lt;p&gt;使用列表下标来切&lt;br&gt;
+ s = ‘china’&lt;br&gt;
+print (s [2])   // 会打印出 i&lt;br&gt;
+print (s [:3])  // 会打印出 chin&lt;br&gt;
+ 步长默认为 1 也可以不写&lt;/p&gt;
+&lt;h1 id=&#34;字典的高级用法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字典的高级用法&#34;&gt;#&lt;/a&gt; 字典的高级用法&lt;/h1&gt;
+&lt;p&gt;获取字典内的值两个方法&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;字典名 [’字典内的值]&lt;/li&gt;
+&lt;li&gt;字典名.get (‘字典内的值’)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;两者不同的是当字典内没有该值 1 方法会报错而 2 方法会返回 None 空的值&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;字典修改：直接字典名 [‘对应的值’] = 要修改的值&lt;/p&gt;
+&lt;p&gt;字典的添加：字典名 [‘值’] = 要添加的值    // 如果字典里面没有这个值则会添加，如果有则会成为修改。&lt;/p&gt;
+&lt;p&gt;字典中的删除：有两个方法一个是 del 另一个是 clear 两者虽然都是删除但是作用还是有区别的，del 是删除指定的值和删除整个字典，clear 则是清空字典内容但是保留字典对象&lt;/p&gt;
+&lt;p&gt;遍历：就是将数据一个一个输出&lt;/p&gt;
+&lt;h1 id=&#34;函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#函数&#34;&gt;#&lt;/a&gt; 函数&lt;/h1&gt;
+&lt;p&gt;def 声明函数&lt;br&gt;
+格式：def 函数名 (可以放形参)&lt;br&gt;
+ 而调用函数&lt;br&gt;
+格式：def 函数名 (放实参)&lt;/p&gt;
+&lt;p&gt;函数的局部变量和全局变量&lt;/p&gt;
+&lt;p&gt;局部变量：在函数内部定义的变量叫做局部变量&lt;br&gt;
+全局变量：在函数外部定义的变量称之为全局变量，它可以在函数内使用也可以在函数外部使用。&lt;/p&gt;
+&lt;p&gt;文件的操作 I/o&lt;/p&gt;
+&lt;p&gt;Python 打开和关闭文件&lt;br&gt;
+ open 函数&lt;br&gt;
+打开文件&lt;br&gt;
+格式：open (文件路径，访问模式)&lt;br&gt;
+ 关闭文件&lt;br&gt;
+格式：&lt;br&gt;
+fp = open (文件路径，访问模式)  // 打开文件&lt;br&gt;
+ fp. write (写入文件内容)  // 写入文件&lt;br&gt;
+ fp.close ()  // 关闭文件&lt;br&gt;
+ fp.read () // 读取文件内容&lt;br&gt;
+ read 是按一个字节一个字节读取的效率比较慢&lt;br&gt;
+ readline 是按一行一行读取的但是返回的是一个列表&lt;/p&gt;
+&lt;p&gt;访问模式&lt;br&gt;
+ w : 读写&lt;br&gt;
+ r: 仅读&lt;br&gt;
+ a: 在文件内容后面追加内容，如果没有该文件则会创建文件并写入内容&lt;br&gt;
+ r+: 打开文件并将指针移到文件的开头，若没有该文件则会创建新的文件&lt;br&gt;
+ wb: 以二进制模式打开文件用于读写，若没有该文件则会创建新的文件并写入&lt;/p&gt;
+&lt;p&gt;urlib 六个使用方法&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/85.html</guid>
+            <title>CSS笔记</title>
+            <link>https://www.naraci.top/post/85.html</link>
+            <category term="css" scheme="https://www.naraci.top/categories/css/" />
+            <category term="css" scheme="https://www.naraci.top/tags/css/" />
+            <pubDate>Thu, 03 Nov 2022 23:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;文本对齐方式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#文本对齐方式&#34;&gt;#&lt;/a&gt; 文本对齐方式&lt;/h1&gt;
+&lt;p&gt;text-align:center 居中&lt;br&gt;
+ text-align:right 向右对齐&lt;br&gt;
+ text-align:jusitfy 每行被展开为宽度相等，左，右外边距是对齐。&lt;/p&gt;
+&lt;h1 id=&#34;文本修饰&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#文本修饰&#34;&gt;#&lt;/a&gt; 文本修饰&lt;/h1&gt;
+&lt;p&gt;text-decoration:none 用于删除下划线&lt;br&gt;
+ text-indent:50px 文本缩进用来指定文本的第一行缩进。&lt;br&gt;
+font-style:normal 正常显示文本&lt;br&gt;
+ font-style:italic 以斜体字显示的文字&lt;br&gt;
+ font-size 控制文字大小&lt;/p&gt;
+&lt;h1 id=&#34;链接样式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#链接样式&#34;&gt;#&lt;/a&gt; 链接样式&lt;/h1&gt;
+&lt;p&gt;a:link {color:#000000;} /* 未访问链接 */&lt;br&gt;
+a:visited {color:#00FF00;} /* 已访问链接 &lt;em&gt;/&lt;br&gt;
+a:hover {color:#FF00FF;} /&lt;/em&gt; 鼠标移动到链接上 &lt;em&gt;/&lt;br&gt;
+a:active {color:#0000FF;} /&lt;/em&gt; 鼠标点击时 */&lt;br&gt;
+&lt;strong&gt; 常见的链接样式&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;link 链接&lt;br&gt;
+ visited 访问&lt;br&gt;
+ hover 悬停&lt;br&gt;
+ active 活动&lt;/p&gt;
+&lt;h1 id=&#34;盒子模型box-model&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#盒子模型box-model&#34;&gt;#&lt;/a&gt; 盒子模型（Box Model）&lt;/h1&gt;
+&lt;p&gt;盒子包含：&lt;br&gt;
+外边距 - Margin：清除外边框的区域，外边距是透明的&lt;br&gt;
+边框 - Border：围绕在内边距和外边距的边框&lt;br&gt;
+内边距 - Padding：清除内容周围的区域，外边距是透明的&lt;br&gt;
+实际内容 - Content：盒子的内容，显示文本和图像&lt;/p&gt;
+&lt;p&gt;总元素的宽度：宽度 + 左填充 + 右填充 + 左边框 + 右边框 + 左边距 + 右边距&lt;/p&gt;
+&lt;p&gt;总元素的高度：高度 + 顶部填充 + 底部填充 + 上边框 + 下边框 + 上边距 + 下边距&lt;/p&gt;
+&lt;h1 id=&#34;border边框&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#border边框&#34;&gt;#&lt;/a&gt; Border (边框)&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;border-style&lt;/strong&gt;&lt;br&gt;
+dotted：定义一个点线边框&lt;br&gt;
+ dashed：定义一个虚线边框&lt;br&gt;
+ solid：定义一个实体边框&lt;br&gt;
+ double：定义两个边框，两个边框的宽度和 border-width 的值相同&lt;br&gt;
+ groove：定义 3D 沟槽边框，效果取决于边框的颜色值&lt;br&gt;
+ ridge：定义 3D 脊边框，效果取决于颜色值&lt;br&gt;
+ inset：定义一个 3D 的嵌入边框吗，效果取决于边框的颜色值&lt;br&gt;
+ outset：定义一个 3D 突出边框。效果取决于边框的颜色值&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;边框 - 单独设置各边&lt;/strong&gt;&lt;br&gt;
+ border-top-style:dotted;&lt;br&gt;
+border-right-style:solid;&lt;br&gt;
+border-bottom-style:dotted;&lt;br&gt;
+border-left-style:solid;&lt;/p&gt;
+&lt;h1 id=&#34;css轮廓outline&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#css轮廓outline&#34;&gt;#&lt;/a&gt; css 轮廓 (outline)&lt;/h1&gt;
+&lt;p&gt;轮框是绘制元素周期的一条线，位于边框边缘的外围，可以起到突出元素的作用。&lt;br&gt;
+ps：outline 是不占空间的，既不会增加额外的 width 或者 height&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;outline&lt;/strong&gt;（在一个声明中设置所有的轮廓属性）&lt;br&gt;
+值：&lt;br&gt;
+_outline-color&lt;br&gt;
+outline-style&lt;br&gt;
+outline-width&lt;br&gt;
+inherit&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;outline-color&lt;/strong&gt; (设置轮廓的颜色)&lt;br&gt;
+ 值：&lt;br&gt;
+color-name&lt;br&gt;
+hex-number&lt;br&gt;
+rgb-number&lt;br&gt;
+_invert&lt;br&gt;
+inherit&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;outline-style&lt;/strong&gt; (设置轮廓样式)&lt;br&gt;
+ 值：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;none  
+dotted  
+dashed  
+solid  
+double  
+groove  
+ridge  
+inset  
+outset  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;inherit&lt;/p&gt;
+&lt;p&gt;outline-width（设置轮廓宽度）&lt;br&gt;
+值：&lt;br&gt;
+thin&lt;br&gt;
+medium&lt;br&gt;
+thick&lt;br&gt;
+_length&lt;br&gt;
+inherit&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/8c17a938.html</guid>
+            <title>用Python编写的抖音无水印视频代码</title>
+            <link>https://www.naraci.top/post/8c17a938.html</link>
+            <category term="Python" scheme="https://www.naraci.top/categories/Python/" />
+            <category term="Python" scheme="https://www.naraci.top/tags/Python/" />
+            <pubDate>Mon, 17 Oct 2022 23:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;64&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# author:Naraci  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# time:14:44  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# file:DouYing_Video.py  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# IDE:PyCharm  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; requests  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; re  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; os  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; unicodedata  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;欢迎使用奈良池DY无水印解析系统\n&amp;quot;&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; os.path.exists(&lt;span class=&#34;string&#34;&gt;&amp;#x27;D:/抖音无水印解析视频&amp;#x27;&lt;/span&gt;):  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    wjml = os.path.exists  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;检测到已有该目录&amp;quot;&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;else&lt;/span&gt;:  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    os.makedirs(&lt;span class=&#34;string&#34;&gt;&amp;quot;D:/抖音无水印解析视频&amp;quot;&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;以为您创建下载目录&amp;quot;&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;pre_savename = &lt;span class=&#34;string&#34;&gt;&amp;#x27;D:/抖音无水印解析视频/&amp;#x27;&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;name = &lt;span class=&#34;string&#34;&gt;&amp;quot;下载成功文件已保存至&amp;quot;&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;headers = &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;string&#34;&gt;&amp;quot;user-agent&amp;quot;&lt;/span&gt;: &lt;span class=&#34;string&#34;&gt;&amp;quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) &amp;quot;&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                  &lt;span class=&#34;string&#34;&gt;&amp;quot;Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.30 &amp;quot;&lt;/span&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;UrlGet&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;url&lt;/span&gt;):  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;try&lt;/span&gt;:  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        r = requests.get(url, timeout=&lt;span class=&#34;number&#34;&gt;30&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        r.raise_for_status()  &lt;span class=&#34;comment&#34;&gt;# 输出异常信息  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        r.encoding = r.apparent_encoding  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; r.text  &lt;span class=&#34;comment&#34;&gt;# 将网页信息内容返回给其他程序块  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;except&lt;/span&gt;:  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;  &lt;span class=&#34;comment&#34;&gt;# 将异常内容返回空字符串  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;UrlHandle&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;url&lt;/span&gt;):  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    shorturl = re.findall(&lt;span class=&#34;string&#34;&gt;&amp;quot;https?://[a-z./A-Z0-9]+&amp;quot;&lt;/span&gt;, url)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;len&lt;/span&gt;(shorturl) == &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;:  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        VideoShoutUrl = shorturl[&lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;]  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        url = requests.get(VideoShoutUrl, headers=headers).url  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        VideoPage = requests.post(url=url, headers=headers)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;# 匹配视频地址  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        regular = re.findall(&lt;span class=&#34;string&#34;&gt;&amp;#x27;src(.*?)mp4&amp;#x27;&lt;/span&gt;, VideoPage.text)[&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;]  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;# 解码  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        video_url = requests.utils.unquote(regular).replace(&lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;quot;:&amp;quot;&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;https:&amp;#x27;&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;# title = re.findall(&amp;#x27;&amp;lt;title data-react-helmet=&amp;quot;true&amp;quot;&amp;gt;(.*?)&amp;lt;/title&amp;gt;&amp;#x27;, VideoPage.text)[0]  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        title = re.findall(&lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;lt;title data-react-helmet=&amp;quot;true&amp;quot;&amp;gt;(.*?)&amp;lt;/title&amp;gt;&amp;#x27;&lt;/span&gt;, VideoPage.text, re.S)[&lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;].replace(&lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;quot;\n&amp;quot;&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;quot;&amp;quot;&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;正在下载：&amp;quot;&lt;/span&gt;, title)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;# 创建文件夹  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        f = &lt;span class=&#34;built_in&#34;&gt;open&lt;/span&gt;(pre_savename + &lt;span class=&#34;string&#34;&gt;&amp;quot;%s.mp4&amp;quot;&lt;/span&gt; % title, mode=&lt;span class=&#34;string&#34;&gt;&amp;quot;wb&amp;quot;&lt;/span&gt;)  &lt;span class=&#34;comment&#34;&gt;# wb表示写入的内容为非文本文件,VideoName为视频标题  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        f.write(requests.get(video_url, headers=headers).content)  &lt;span class=&#34;comment&#34;&gt;# 向外取出图片数据，不是文本信息  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        DiZhi = name + pre_savename  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(DiZhi)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; __name__ == &lt;span class=&#34;string&#34;&gt;&amp;#x27;__main__&amp;#x27;&lt;/span&gt;:  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    run = &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;while&lt;/span&gt; run == &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;:  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        url = &lt;span class=&#34;built_in&#34;&gt;input&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;请输入视频链接：&amp;quot;&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;# url = &amp;#x27;5.15 yGi:/ 喜欢你 很喜欢你 特别喜欢你.@ta  https://v.douyin.com/Ff1a79j/ 复制此链接，打开Dou音搜索，直接观看视频！ &amp;#x27;        html = UrlGet(url)  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        UrlHandle(url)  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(html)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;注意：本地需要有 Python 环境！&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/14702.html</guid>
+            <title>Python基础</title>
+            <link>https://www.naraci.top/post/14702.html</link>
+            <category term="python" scheme="https://www.naraci.top/categories/python/" />
+            <category term="python" scheme="https://www.naraci.top/tags/python/" />
+            <pubDate>Fri, 14 Oct 2022 23:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;变量&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#变量&#34;&gt;#&lt;/a&gt; 变量&lt;/h1&gt;
+&lt;p&gt;直接赋值例如：&lt;br&gt;
+a = 1&lt;br&gt;
+b = 2&lt;br&gt;
+ 注意：字符串赋值需加引号 “” 如  &lt;code&gt;c = &amp;quot;刘强&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;数据类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据类型&#34;&gt;#&lt;/a&gt; 数据类型&lt;/h1&gt;
+&lt;p&gt;整数类型：int&lt;br&gt;
+ 字符串类型：str&lt;br&gt;
+ 浮点数：float&lt;br&gt;
+ 等等…&lt;/p&gt;
+&lt;h1 id=&#34;数组&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数组&#34;&gt;#&lt;/a&gt; 数组&lt;/h1&gt;
+&lt;p&gt;注意取单个字符需要从 0 开始计数例如&lt;br&gt;
+ &#39;&#39;a,b,c,d&amp;quot;–&amp;gt;0,1,2,3&lt;br&gt;
+ 若 &lt;code&gt;[:5]&lt;/code&gt; –&amp;gt; 则是从 1 开始计数&lt;/p&gt;
+&lt;h1 id=&#34;字典&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字典&#34;&gt;#&lt;/a&gt; 字典&lt;/h1&gt;
+&lt;p name:=&#34;&#34; 张三,sex:男,age:=&#34;&#34; 20=&#34;&#34;&gt;var =&lt;/p&gt;
+&lt;p&gt;函数&lt;br&gt;
+常用的 Python 内助的函数&lt;br&gt;
+ input ( ) 用于接收用户输入的数据&lt;br&gt;
+ print ( ) 用于打印数据&lt;/p&gt;
+&lt;h1 id=&#34;判断语句&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#判断语句&#34;&gt;#&lt;/a&gt; 判断语句&lt;/h1&gt;
+&lt;p&gt;假若&lt;br&gt;
+ a = 3&lt;br&gt;
+b = 2&lt;br&gt;
+ 如果 a 和 b 相等则会执行上面的语句反之执行下一行的&lt;br&gt;
+ if 判断条件：&lt;br&gt;
+执行语句……&lt;br&gt;
+else：&lt;br&gt;
+执行语句……&lt;br&gt;
+ 注意：缩进需注意&lt;/p&gt;
+&lt;h1 id=&#34;循环语句&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#循环语句&#34;&gt;#&lt;/a&gt; 循环语句&lt;/h1&gt;
+&lt;p&gt;while 语句 给定它一个值的范围等于，不等于或者大小于它都会一直运行直至超出或者小于给定值停止运行。&lt;br&gt;
+&lt;img data-src=&#34;https://www.runoob.com/wp-content/uploads/2014/05/006faQNTgw1f5wnm06h3ug30ci08cake.gif&#34; alt=&#34;图片摘自与菜鸟教程&#34;&gt;&lt;/p&gt;
+&lt;p&gt;for 语句&lt;br&gt;
+ Python for 循环可以遍历任何序列的项目，如一个列表或者一个字符串&lt;br&gt;
+可以循环字符串&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;s = &lt;span class=&#34;string&#34;&gt;&amp;#x27;china&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; i &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; s:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(i)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;结果挨个换行打印出 china&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;for i in range(5)&lt;br&gt;
+ 含义是遍历 0-5 前一个结束会从 0 开始计数至数字 4 结束&lt;/p&gt;
+&lt;p&gt;若想从一计数那么需要加上参数&lt;br&gt;
+ for i in range (1,5)&lt;br&gt;
+ 含有则是从 1 开始到 5 前一个数字结束&lt;br&gt;
+会输出 1-4&lt;/p&gt;
+&lt;p&gt;for 语句里面还能包含三个值例如：&lt;br&gt;
+for i in range(1, 10, 3)&lt;br&gt;
+ for i in range (起始值， 结束值， 步长)&lt;br&gt;
+ 1 开始步长为 3&lt;br&gt;
+1+3=4&lt;br&gt;
+4+3=7&lt;br&gt;
+7+3=10    // 但是只能 1-9 所以 10 不能输出&lt;br&gt;
+则会打印 1 4 7&lt;br&gt;
+** 应用场景：** 会爬取一个列表返回给我们&lt;br&gt;
+循环一个列表&lt;br&gt;
+例如：&lt;br&gt;
+a_list = [‘周杰伦’，‘林俊杰’, ‘成龙’]&lt;br&gt;
+for i in a_list:&lt;br&gt;
+print(i)&lt;br&gt;
+ break 语句&lt;br&gt;
+ break 语句用在 while 和 for 循环中。&lt;br&gt;
+作用：停止执行后面的循环语句&lt;/p&gt;
+&lt;p&gt;continue 语句&lt;br&gt;
+ Python continue 语句跳出本次循环，而 break 跳出整个循环。&lt;br&gt;
+continue 语句用来告诉 Python 跳过当前循环的剩余语句，然后继续进行下一轮循环。&lt;br&gt;
+continue 语句用在 while 和 for 循环中。&lt;/p&gt;
+&lt;p&gt;pass 语句&lt;br&gt;
+作用：是空函数，不做任何事情，用于暂时还未写逻辑和函数的里面&lt;/p&gt;
+&lt;p&gt;Python 日期和时间&lt;br&gt;
+用函数方法&lt;br&gt;
+ time.time ( ) 来获取当前时间戳&lt;br&gt;
+格式化时间&lt;br&gt;
+ &lt;code&gt;print(time.strftime(&amp;quot;%Y-%m-%d %H:%M:%S&amp;quot;, time.localtime()))&lt;/code&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/90e3f00.html</guid>
+            <title>Python爬取微博热搜至excel</title>
+            <link>https://www.naraci.top/post/90e3f00.html</link>
+            <category term="Python" scheme="https://www.naraci.top/categories/Python/" />
+            <category term="Python" scheme="https://www.naraci.top/tags/Python/" />
+            <pubDate>Fri, 14 Oct 2022 23:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;注意&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#注意&#34;&gt;#&lt;/a&gt; 注意&lt;/h2&gt;
+&lt;p&gt;爬取热搜需要 cookie 和文件路径不然报错无法运行&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;59&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# author:Naraci&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# time:2022/5/6   10:53&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# WX:Naraci&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# file:微博热搜.py&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# IDE:PyCharm&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; requests&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;from&lt;/span&gt; bs4 &lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; BeautifulSoup&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;from&lt;/span&gt; urllib &lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; parse&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;import&lt;/span&gt; xlwt&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;headers = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;string&#34;&gt;&amp;#x27;user-agent&amp;#x27;&lt;/span&gt;: &lt;span class=&#34;string&#34;&gt;&amp;#x27;Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                  &lt;span class=&#34;string&#34;&gt;&amp;#x27; (KHTML, like Gecko) Chrome/101.0.4951.41 Mobile Safari/537.36 Edg/101.0.1210.32&amp;#x27;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;string&#34;&gt;&amp;#x27;cookie&amp;#x27;&lt;/span&gt;: &lt;span class=&#34;string&#34;&gt;&amp;#x27;填入cookie&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;Get_html&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;url&lt;/span&gt;):  &lt;span class=&#34;comment&#34;&gt;# 获取页面&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    response = requests.get(url, headers=headers)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; response.status_code == &lt;span class=&#34;number&#34;&gt;200&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        parse_html(response.text)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;else&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(response.status_code)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;pass&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;parse_html&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;content&lt;/span&gt;):  &lt;span class=&#34;comment&#34;&gt;# 解析页面&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    soup = BeautifulSoup(content, &lt;span class=&#34;string&#34;&gt;&amp;#x27;lxml&amp;#x27;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    tds = soup.find_all(&lt;span class=&#34;string&#34;&gt;&amp;#x27;a&amp;#x27;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    datalist = []  &lt;span class=&#34;comment&#34;&gt;# 创建一个列表&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; a &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; tds:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        data = []&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        title = a.get_text()&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        URL = a[&lt;span class=&#34;string&#34;&gt;&amp;#x27;href&amp;#x27;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        URL_whole = parse.urljoin(&lt;span class=&#34;string&#34;&gt;&amp;#x27;https://s.weibo.com/&amp;#x27;&lt;/span&gt;, URL)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(title)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(URL_whole)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;写入完成！！！！！&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        data.append(title)  &lt;span class=&#34;comment&#34;&gt;# 写入标题&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        data.append(URL_whole)  &lt;span class=&#34;comment&#34;&gt;# 写入链接&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        datalist.append(data)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    book = xlwt.Workbook(encoding=&lt;span class=&#34;string&#34;&gt;&amp;#x27;utf-8&amp;#x27;&lt;/span&gt;, style_compression=&lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;)  &lt;span class=&#34;comment&#34;&gt;# 生成excel文件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    sheet = book.add_sheet(&lt;span class=&#34;string&#34;&gt;&amp;#x27;微博热搜榜&amp;#x27;&lt;/span&gt;, cell_overwrite_ok=&lt;span class=&#34;literal&#34;&gt;True&lt;/span&gt;)  &lt;span class=&#34;comment&#34;&gt;# 生成一个表单&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    cols = [&lt;span class=&#34;string&#34;&gt;&amp;#x27;标题&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;链接&amp;#x27;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; col &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;range&lt;/span&gt;(&lt;span class=&#34;built_in&#34;&gt;len&lt;/span&gt;(cols)):&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        sheet.write(&lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;, col, cols[col])&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; i &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;range&lt;/span&gt;(&lt;span class=&#34;built_in&#34;&gt;len&lt;/span&gt;(datalist)):&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            data = datalist[i]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; j &lt;span class=&#34;keyword&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;range&lt;/span&gt;(&lt;span class=&#34;built_in&#34;&gt;len&lt;/span&gt;(data)):&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                sheet.write(i + &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;, j, data[j])&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                book.save(&lt;span class=&#34;string&#34;&gt;&amp;quot;C:/路径/微博热搜榜.xls&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; __name__ == &lt;span class=&#34;string&#34;&gt;&amp;#x27;__main__&amp;#x27;&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    url = &lt;span class=&#34;string&#34;&gt;&amp;#x27;https://s.weibo.com/top/summary&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    Get_html(url)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;http://image.naraci.top/2022/05/10/7fb22be402cb7.png&#34; alt=&#34; &#34;&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/5753e137.html</guid>
+            <title>Cloudreve windows版安装成功后提示请求出现错误</title>
+            <link>https://www.naraci.top/post/5753e137.html</link>
+            <category term="Course" scheme="https://www.naraci.top/categories/Course/" />
+            <category term="Course" scheme="https://www.naraci.top/tags/Course/" />
+            <pubDate>Thu, 06 Oct 2022 23:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;前言&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h3&gt;
+&lt;p&gt;今天根据官网安装手册搭建 Cloudreve 网盘程序后 IP 访问正常但是反代域名便出现主页提示 “请求时出现问题 xxx”&lt;br&gt;
+&lt;img data-src=&#34;https://forum.cloudreve.org/assets/files/2021-07-06/1625561821-684171-187f6530-f458-43ae-9d1d-ecb9048d22d1.png&#34; alt=&#34;问题图片例子&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;解决方法仅支持apache&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#解决方法仅支持apache&#34;&gt;#&lt;/a&gt; 解决方法（仅支持 Apache）&lt;/h3&gt;
+&lt;figure class=&#34;highlight markdown&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;section&#34;&gt;#PROXY-START/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;language-xml&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;IfModule&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;mod_proxy.c&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ProxyRequests Off&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;SSLProxyEngine on&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;AllowEncodedSlashes NoDecode&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ProxyPass / http://127.0.0.1:5212/ nocanon&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ProxyPassReverse / http://127.0.0.1:5212/&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;language-xml&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;/&lt;span class=&#34;name&#34;&gt;IfModule&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;section&#34;&gt;#PROXY-END/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在反代理修改配置文件添加下面代码即可！&lt;/p&gt;
+&lt;p&gt;注意：IP 地址记得也需修改为自己的 IP&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/21290.html</guid>
+            <title>数据库基础操作</title>
+            <link>https://www.naraci.top/post/21290.html</link>
+            <category term="MYSQL" scheme="https://www.naraci.top/categories/MYSQL/" />
+            <category term="MySQL" scheme="https://www.naraci.top/tags/MySQL/" />
+            <pubDate>Wed, 28 Sep 2022 23:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;创建新数据库&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#创建新数据库&#34;&gt;#&lt;/a&gt; 创建新数据库&lt;/h1&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;CREATE DATABASE &amp;#x27;数据库名&amp;#x27; CHARACTER SET （字符集）`utf8mb4` COLLATE （排序规则）`utf8mb4_bin`;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;mysql创建新表&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mysql创建新表&#34;&gt;#&lt;/a&gt; Mysql 创建新表&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;创建数据表&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;CREATE TABLE `数据库名称`.`数据表名称`(&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;`名` varchar(255) NOT NULL(没有默认值),  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;mysql基础语法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#mysql基础语法&#34;&gt;#&lt;/a&gt; Mysql 基础语法&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Insert 语句：向某一行插入一条数据。&lt;br&gt;
+在查询编辑器中输入以下 sql.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;INSERT INTO  &lt;code&gt;user&lt;/code&gt; &lt;br&gt;
+( &lt;code&gt;mobile&lt;/code&gt; , &lt;code&gt;name&lt;/code&gt; , &lt;code&gt;sex&lt;/code&gt; )&lt;br&gt;
+VALUES&lt;br&gt;
+ (‘123’,‘张三’,‘1’)  // 这里不是反单引号！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Delete 删除语句：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;DELETE FROM&lt;br&gt;
+ &lt;code&gt;表名&lt;/code&gt; &lt;br&gt;
+ WHERE 值 =  &lt;code&gt;表内对应值&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Select 语句：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SELECT *&lt;br&gt;
+ &lt;code&gt;表名&lt;/code&gt; &lt;br&gt;
+ FROM  &lt;code&gt;表名&lt;/code&gt;    // 查询表内全部内容&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Update 语句：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;UPDATE &lt;code&gt;user&lt;/code&gt; &lt;br&gt;
+SET  &lt;code&gt;name&lt;/code&gt;  = ’值‘&lt;br&gt;
+WHERE mobile = ’值‘     // 根据 mobile 来确认修改数据的值&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;远程连接mysql数据库的一些问题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#远程连接mysql数据库的一些问题&#34;&gt;#&lt;/a&gt; 远程连接 MySQL 数据库的一些问题&lt;/h1&gt;
+&lt;p&gt;记录&lt;strong&gt;报错 2002（10060）&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;服务器安全组需要开放数据库的端口（默认 3306）。&lt;/li&gt;
+&lt;li&gt;假如使用宝塔面板则需要在安全内放行端口。&lt;/li&gt;
+&lt;li&gt;若上方内容还是不行则在服务器命令窗口输入关闭防火墙的命令。&lt;/li&gt;
+&lt;/ol&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/45655.html</guid>
+            <title>ccaa linux一键安装Arianna+AriaNg+FileBrowser</title>
+            <link>https://www.naraci.top/post/45655.html</link>
+            <category term="Bt" scheme="https://www.naraci.top/categories/Bt/" />
+            <category term="Bt" scheme="https://www.naraci.top/tags/Bt/" />
+            <pubDate>Tue, 27 Sep 2022 23:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;ccaa&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ccaa&#34;&gt;#&lt;/a&gt; CCAA&lt;/h1&gt;
+&lt;p&gt;原为 CentOS + Caddy + AriaNg + Aria2，故命名为 CCAA，不过现在不仅仅支持 CentOS，主流的 Debian、Ubuntu 也已经支持，自 2.0 版本已移除 Caddy，改用 Golang 写了一个简单的 webserver 来运行 AriaNg&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Aria2 提供离线下载&lt;/li&gt;
+&lt;li&gt;ccaa_web 支撑 AriaNg 运行&lt;/li&gt;
+&lt;li&gt;AriaNg 为 Aria2 提供 WEB 界面&lt;/li&gt;
+&lt;li&gt;Filemanager 提供文件管理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;主要功能&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#主要功能&#34;&gt;#&lt;/a&gt; 主要功能&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;支持 HTTP/HTTPS/FTP/BT/ 磁力链接等离线下载，断点续传等&lt;/li&gt;
+&lt;li&gt;文件管理、视频在线播放&lt;/li&gt;
+&lt;li&gt;完善的帮助文档&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;环境要求&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#环境要求&#34;&gt;#&lt;/a&gt; 环境要求&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;支持的操作系统：CentOS 7-8、Debian 8-10、Ubuntu 16-18&lt;/li&gt;
+&lt;li&gt;操作系统要求 64 位&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;安装ccaa&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#安装ccaa&#34;&gt;#&lt;/a&gt; 安装 CCAA&lt;/h1&gt;
+&lt;p&gt;一键安装脚本（使用 root 用户）：&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;bash &amp;lt;(curl -Lsk https://raw.githubusercontent.com/helloxz/ccaa/master/ccaa.sh)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果出现 - bash: curl: command not found 错误，说明 curl 命令没安装，请输入下面的命令先安装 curl，再回过头来执行上面的命令再来一次。&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;#Debian or Ubuntu&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;apt-get -y install curl&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;#CentOS&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;yum -y install curl&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;常用命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常用命令&#34;&gt;#&lt;/a&gt; 常用命令&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;ccaa: 进入 CCAA 操作界面&lt;/li&gt;
+&lt;li&gt;ccaa status: 查看 CCAA 运行状态&lt;/li&gt;
+&lt;li&gt;ccaa stop: 停止 CCAA&lt;/li&gt;
+&lt;li&gt;ccaa start: 启动 CCAA&lt;/li&gt;
+&lt;li&gt;ccaa restart: 重启 CCAA&lt;/li&gt;
+&lt;li&gt;ccaa -v: 查看 CCAA 版本（2.0 开始支持）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;部分截图&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#部分截图&#34;&gt;#&lt;/a&gt; 部分截图&lt;/h1&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://i.imgtg.com/2022/10/06/phiXK.png&#34; alt=&#34;截图&#34;&gt;&lt;br&gt;
+&lt;img data-src=&#34;https://i.imgtg.com/2022/10/06/ph1za.png&#34; alt=&#34;截图&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;文章转载于 https://gitee.com/hixz/ccaa/&lt;/p&gt;
+&lt;/blockquote&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/45550.html</guid>
+            <title>Photoshop制作太极</title>
+            <link>https://www.naraci.top/post/45550.html</link>
+            <category term="PS" scheme="https://www.naraci.top/tags/PS/" />
+            <pubDate>Sat, 24 Sep 2022 23:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;第一步-基础圆形的画法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#第一步-基础圆形的画法&#34;&gt;#&lt;/a&gt; 第一步 基础圆形的画法&lt;/h1&gt;
+&lt;p&gt;创建空白画布和复制图层&lt;/p&gt;
+&lt;p&gt;首先创建白色的画布（初始即可）即右下方复制一个画布，所有操作都在图层上面操作。&lt;br&gt;
+&lt;img data-src=&#34;https://i.imgtg.com/2022/09/22/gymNN.png&#34; alt=&#34; &#34;&gt;&lt;br&gt;
+在最上面的选项栏–&amp;gt; 视图–&amp;gt; 打开标尺，并新建垂直和水平的参考线。&lt;br&gt;
+&lt;img data-src=&#34;https://i.imgtg.com/2022/09/22/gmMnv.png&#34; alt=&#34;两条线居中&#34;&gt;&lt;br&gt;
+在工具栏使用椭圆选框工具在十字交叉点按住 shift+alt 拖动鼠标左键画圆后按住 alt+del 建。&lt;br&gt;
+&lt;img data-src=&#34;https://i.imgtg.com/2022/09/22/gmyDC.png&#34; alt=&#34;效果图&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;第二步开始裁剪太极&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#第二步开始裁剪太极&#34;&gt;#&lt;/a&gt; 第二步开始裁剪太极&lt;/h1&gt;
+&lt;p&gt;用矩形选框工具选中圆形的左半边 (从选中区减去，详情见下方示图)&lt;br&gt;
+&lt;img data-src=&#34;https://i.imgtg.com/2022/09/22/gmpxi.png&#34; alt=&#34;鼠标移至图标上面会显示&#34;&gt;&lt;br&gt;
+选中后可见圆形右边轮廓有清晰的虚线框即成功。&lt;br&gt;
+再取两条水平参考线放置圆形的上面和下面相切。&lt;br&gt;
+&lt;img data-src=&#34;https://i.imgtg.com/2022/09/22/gm4Kj.png&#34; alt=&#34;参考线与圆形相切&#34;&gt;&lt;/p&gt;
+&lt;p&gt;注意：矩形选框工具从左边白框顶部角端开始拖动并设为 (从选项区减去)&lt;/p&gt;
+&lt;p&gt;再次用椭圆选项框工具，在选项栏中选择 (添加选项区) 按下鼠标左键在圆形的四分之一处拖动绘制一个正圆，在圆的上半个区域。再选项栏选中 (从选项区减去) 同上原理在下方圆的四分之一处拖动正圆至圆的下半方出。如下图。&lt;br&gt;
+&lt;img data-src=&#34;https://i.imgtg.com/2022/09/22/gmVBG.png&#34; alt=&#34;&#34;&gt;&lt;br&gt;
+再次 ctrl+del 键取消一半黑色区域为白色。&lt;br&gt;
+&lt;img data-src=&#34;https://i.imgtg.com/2022/09/22/gmYZ1.png&#34; alt=&#34;&#34;&gt;&lt;br&gt;
+在太极一处画一个正圆。&lt;br&gt;
+&lt;img data-src=&#34;https://i.imgtg.com/2022/09/22/gmf0I.png&#34; alt=&#34;&#34;&gt;&lt;br&gt;
+ctrl+del 填充为白色后右击选择变换选区将中心点移至大圆的圆心再右击选择垂直翻转，按回车确认后 alt+del 填充为黑色。&lt;br&gt;
+&lt;img data-src=&#34;https://i.imgtg.com/2022/09/22/gm2H6.png&#34; alt=&#34;完成效果图&#34;&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
