@@ -7,18 +7,6 @@
     "home_page_url": "https://www.naraci.top",
     "items": [
         {
-            "id": "https://www.naraci.top/post/46922.html",
-            "url": "https://www.naraci.top/post/46922.html",
-            "title": "Android 开发笔记",
-            "date_published": "2024-02-11T15:35:01.000Z",
-            "content_html": "<h1 id=\"基础\"><a class=\"anchor\" href=\"#基础\">#</a> 基础</h1>\n<h2 id=\"线性布局linear-layout\"><a class=\"anchor\" href=\"#线性布局linear-layout\">#</a> 线性布局 Linear Layout</h2>\n<p>线性布局内部的各视图有两种排列方式：<br />\n<strong>orientation</strong> 属性为 <strong>horizontal</strong> 时，内部视图在水平方向从左往右排列<br />\n<strong> orientation</strong> 属性<strong> vertical</strong> 时 内部视图在垂直方向从上往下排列<br />\n如果不指定 orientation 属性则默认为水平方向排列。</p>\n<h2 id=\"相对布局-relative-layout\"><a class=\"anchor\" href=\"#相对布局-relative-layout\">#</a> 相对布局 Relative layout</h2>\n<p>相对布局的下级视图位置由其他视图来决定。用于确定下级视图位置的参照物分两种；<br />\n与该试图自身评级的视图<br />\n该视图的上级视图<br />\n如果不设定下级视图的参照物，那么下级视图默认显示在相对布局内部的左上角</p>\n<h2 id=\"网格布局-grid-layout\"><a class=\"anchor\" href=\"#网格布局-grid-layout\">#</a> 网格布局 Grid layout</h2>\n<p>网格布局默认从左到右 从上到下排列 它新增两个属性；<br />\ncolumnCount 属性 它指定网格的列数 即每行能放多少个视图；<br />\nrowCount 属性 它指定了网格的行数 即每列能放多少个视图；</p>\n<h2 id=\"生命周期\"><a class=\"anchor\" href=\"#生命周期\">#</a> 生命周期</h2>\n<p>一个事务由生到死的变化过程</p>\n",
-            "tags": [
-                "Java",
-                "Java",
-                "Android"
-            ]
-        },
-        {
             "id": "https://www.naraci.top/post/1.html",
             "url": "https://www.naraci.top/post/1.html",
             "title": "Java单列模式",
@@ -224,6 +212,17 @@
             "content_html": "<h1 id=\"第一步-基础圆形的画法\"><a class=\"anchor\" href=\"#第一步-基础圆形的画法\">#</a> 第一步 基础圆形的画法</h1>\n<p>创建空白画布和复制图层</p>\n<p>首先创建白色的画布（初始即可）即右下方复制一个画布，所有操作都在图层上面操作。<br />\n<img data-src=\"https://i.imgtg.com/2022/09/22/gymNN.png\" alt=\" \" /><br />\n在最上面的选项栏 --&gt; 视图 --&gt; 打开标尺，并新建垂直和水平的参考线。<br />\n<img data-src=\"https://i.imgtg.com/2022/09/22/gmMnv.png\" alt=\"两条线居中\" /><br />\n在工具栏使用椭圆选框工具在十字交叉点按住 shift+alt 拖动鼠标左键画圆后按住 alt+del 建。<br />\n<img data-src=\"https://i.imgtg.com/2022/09/22/gmyDC.png\" alt=\"效果图\" /></p>\n<h1 id=\"第二步开始裁剪太极\"><a class=\"anchor\" href=\"#第二步开始裁剪太极\">#</a> 第二步开始裁剪太极</h1>\n<p>用矩形选框工具选中圆形的左半边 (从选中区减去，详情见下方示图)<br />\n<img data-src=\"https://i.imgtg.com/2022/09/22/gmpxi.png\" alt=\"鼠标移至图标上面会显示\" /><br />\n选中后可见圆形右边轮廓有清晰的虚线框即成功。<br />\n再取两条水平参考线放置圆形的上面和下面相切。<br />\n<img data-src=\"https://i.imgtg.com/2022/09/22/gm4Kj.png\" alt=\"参考线与圆形相切\" /></p>\n<p>注意：矩形选框工具从左边白框顶部角端开始拖动并设为 (从选项区减去)</p>\n<p>再次用椭圆选项框工具，在选项栏中选择 (添加选项区) 按下鼠标左键在圆形的四分之一处拖动绘制一个正圆，在圆的上半个区域。再选项栏选中 (从选项区减去) 同上原理在下方圆的四分之一处拖动正圆至圆的下半方出。如下图。<br />\n<img data-src=\"https://i.imgtg.com/2022/09/22/gmVBG.png\" alt=\"\" /><br />\n再次 ctrl+del 键取消一半黑色区域为白色。<br />\n<img data-src=\"https://i.imgtg.com/2022/09/22/gmYZ1.png\" alt=\"\" /><br />\n在太极一处画一个正圆。<br />\n<img data-src=\"https://i.imgtg.com/2022/09/22/gmf0I.png\" alt=\"\" /><br />\nctrl+del 填充为白色后右击选择变换选区将中心点移至大圆的圆心再右击选择垂直翻转，按回车确认后 alt+del 填充为黑色。<br />\n<img data-src=\"https://i.imgtg.com/2022/09/22/gm2H6.png\" alt=\"完成效果图\" /></p>\n",
             "tags": [
                 "PS"
+            ]
+        },
+        {
+            "id": "https://www.naraci.top/post/d45339ba.html",
+            "url": "https://www.naraci.top/post/d45339ba.html",
+            "title": "解决Typecho切换5.6php版本以上报错问题",
+            "date_published": "2022-09-10T15:35:01.000Z",
+            "content_html": "<h1 id=\"前言\"><a class=\"anchor\" href=\"#前言\">#</a> 前言</h1>\n<p>今天我检查网站跳转内置文件提示报错问题，提示 “未找到 xxx 文件” 便排查原因。</p>\n<hr />\n<p>于是我先从 php 版本排查是否是它的原因，调至 55php 后网站正常跳转。看来就是这个问题！在网上查原因发现 typecho 支持 mysql，7.x 就丢弃了这个改为 pdo_mysql1。</p>\n<hr />\n<h2 id=\"解决方法\"><a class=\"anchor\" href=\"#解决方法\">#</a> 解决方法：</h2>\n<p>在 typecho 根目录里找见  <code>config.inc.php</code>  打开它在第 55 行修改为以下内容</p>\n<figure class=\"highlight php\"><figcaption data-lang=\"PHP\"></figcaption><table><tr><td data-num=\"1\"></td><td><pre><span class=\"token variable\">$db</span> <span class=\"token operator\">=</span> <span class=\"token keyword\">new</span> <span class=\"token class-name\">Typecho_Db</span><span class=\"token punctuation\">(</span><span class=\"token string single-quoted-string\">'Pdo_Mysql'</span><span class=\"token punctuation\">,</span> <span class=\"token string single-quoted-string\">'typecho_'</span><span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span><span class=\"token operator\">...</span></pre></td></tr></table></figure><p><img data-src=\"http://image.naraci.top/2022/03/11/a99eb769b24e6.png\" alt=\" \" /></p>\n",
+            "tags": [
+                "Course",
+                "Course"
             ]
         }
     ]

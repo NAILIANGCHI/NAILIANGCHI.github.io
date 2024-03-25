@@ -10,8 +10,8 @@
         </author>
         <description>No woman in heart, natural God in code！</description>
         <language>zh-CN</language>
-        <pubDate>Sun, 11 Feb 2024 23:35:01 +0800</pubDate>
-        <lastBuildDate>Sun, 11 Feb 2024 23:35:01 +0800</lastBuildDate>
+        <pubDate>Thu, 19 Oct 2023 00:00:00 +0800</pubDate>
+        <lastBuildDate>Thu, 19 Oct 2023 00:00:00 +0800</lastBuildDate>
         <category term="blog" />
         <category term="奈良池" />
         <category term="博客" />
@@ -22,33 +22,6 @@
         <category term="naraci" />
         <category term="奈良池博客" />
         <category term="编程技术" />
-        <item>
-            <guid isPermalink="true">https://www.naraci.top/post/46922.html</guid>
-            <title>Android 开发笔记</title>
-            <link>https://www.naraci.top/post/46922.html</link>
-            <category term="Java" scheme="https://www.naraci.top/categories/Java/" />
-            <category term="Java" scheme="https://www.naraci.top/tags/Java/" />
-            <category term="Android" scheme="https://www.naraci.top/tags/Android/" />
-            <pubDate>Sun, 11 Feb 2024 23:35:01 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;基础&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#基础&#34;&gt;#&lt;/a&gt; 基础&lt;/h1&gt;
-&lt;h2 id=&#34;线性布局linear-layout&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#线性布局linear-layout&#34;&gt;#&lt;/a&gt; 线性布局 Linear Layout&lt;/h2&gt;
-&lt;p&gt;线性布局内部的各视图有两种排列方式：&lt;br /&gt;
-&lt;strong&gt;orientation&lt;/strong&gt; 属性为 &lt;strong&gt;horizontal&lt;/strong&gt; 时，内部视图在水平方向从左往右排列&lt;br /&gt;
-&lt;strong&gt; orientation&lt;/strong&gt; 属性&lt;strong&gt; vertical&lt;/strong&gt; 时 内部视图在垂直方向从上往下排列&lt;br /&gt;
-如果不指定 orientation 属性则默认为水平方向排列。&lt;/p&gt;
-&lt;h2 id=&#34;相对布局-relative-layout&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#相对布局-relative-layout&#34;&gt;#&lt;/a&gt; 相对布局 Relative layout&lt;/h2&gt;
-&lt;p&gt;相对布局的下级视图位置由其他视图来决定。用于确定下级视图位置的参照物分两种；&lt;br /&gt;
-与该试图自身评级的视图&lt;br /&gt;
-该视图的上级视图&lt;br /&gt;
-如果不设定下级视图的参照物，那么下级视图默认显示在相对布局内部的左上角&lt;/p&gt;
-&lt;h2 id=&#34;网格布局-grid-layout&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#网格布局-grid-layout&#34;&gt;#&lt;/a&gt; 网格布局 Grid layout&lt;/h2&gt;
-&lt;p&gt;网格布局默认从左到右 从上到下排列 它新增两个属性；&lt;br /&gt;
-columnCount 属性 它指定网格的列数 即每行能放多少个视图；&lt;br /&gt;
-rowCount 属性 它指定了网格的行数 即每列能放多少个视图；&lt;/p&gt;
-&lt;h2 id=&#34;生命周期&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#生命周期&#34;&gt;#&lt;/a&gt; 生命周期&lt;/h2&gt;
-&lt;p&gt;一个事务由生到死的变化过程&lt;/p&gt;
- ]]></description>
-        </item>
         <item>
             <guid isPermalink="true">https://www.naraci.top/post/1.html</guid>
             <title>Java单列模式</title>
@@ -1000,6 +973,23 @@ WHERE mobile = ’值‘     // 根据 mobile 来确认修改数据的值&lt;/p&
 &lt;img data-src=&#34;https://i.imgtg.com/2022/09/22/gmf0I.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
 ctrl+del 填充为白色后右击选择变换选区将中心点移至大圆的圆心再右击选择垂直翻转，按回车确认后 alt+del 填充为黑色。&lt;br /&gt;
 &lt;img data-src=&#34;https://i.imgtg.com/2022/09/22/gm2H6.png&#34; alt=&#34;完成效果图&#34; /&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/d45339ba.html</guid>
+            <title>解决Typecho切换5.6php版本以上报错问题</title>
+            <link>https://www.naraci.top/post/d45339ba.html</link>
+            <category term="Course" scheme="https://www.naraci.top/categories/Course/" />
+            <category term="Course" scheme="https://www.naraci.top/tags/Course/" />
+            <pubDate>Sat, 10 Sep 2022 23:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
+&lt;p&gt;今天我检查网站跳转内置文件提示报错问题，提示 “未找到 xxx 文件” 便排查原因。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;于是我先从 php 版本排查是否是它的原因，调至 55php 后网站正常跳转。看来就是这个问题！在网上查原因发现 typecho 支持 mysql，7.x 就丢弃了这个改为 pdo_mysql1。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&#34;解决方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#解决方法&#34;&gt;#&lt;/a&gt; 解决方法：&lt;/h2&gt;
+&lt;p&gt;在 typecho 根目录里找见  &lt;code&gt;config.inc.php&lt;/code&gt;  打开它在第 55 行修改为以下内容&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token variable&#34;&gt;$db&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Typecho_Db&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string single-quoted-string&#34;&gt;&#39;Pdo_Mysql&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string single-quoted-string&#34;&gt;&#39;typecho_&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;...&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img data-src=&#34;http://image.naraci.top/2022/03/11/a99eb769b24e6.png&#34; alt=&#34; &#34; /&gt;&lt;/p&gt;
  ]]></description>
         </item>
     </channel>
