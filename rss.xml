@@ -10,8 +10,8 @@
         </author>
         <description>No woman in heart, natural God in code！</description>
         <language>zh-CN</language>
-        <pubDate>Thu, 19 Oct 2023 00:00:00 +0800</pubDate>
-        <lastBuildDate>Thu, 19 Oct 2023 00:00:00 +0800</lastBuildDate>
+        <pubDate>Thu, 28 Mar 2024 13:35:01 +0800</pubDate>
+        <lastBuildDate>Thu, 28 Mar 2024 13:35:01 +0800</lastBuildDate>
         <category term="blog" />
         <category term="奈良池" />
         <category term="博客" />
@@ -22,6 +22,22 @@
         <category term="naraci" />
         <category term="奈良池博客" />
         <category term="编程技术" />
+        <item>
+            <guid isPermalink="true">https://www.naraci.top/post/25037.html</guid>
+            <title>记录一次vscode 插件商店 提取扩展插件 失败</title>
+            <link>https://www.naraci.top/post/25037.html</link>
+            <category term="idea" scheme="https://www.naraci.top/categories/idea/" />
+            <category term="id" scheme="https://www.naraci.top/tags/id/" />
+            <pubDate>Thu, 28 Mar 2024 13:35:01 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;strong&gt;今天打算下载个 React 的一个插件 奈何怎么整都显示 提取扩展失败，相对来说 国内应该支持插件的下载不用用魔法工具的加持呀，难道大陆给限制了？我便使用魔法工具来尝试下载，果然还是不行，有从网上看更改 dns ， 难不成我的 dns 被污染了？ 我便又去改 dns，还是不行，现在就开始有点着急了。。。然后卸载软件清空缓存 ，不出所料还是不行，软件没有问题那么就是 我本地环境的问题了，开始排查，更换网络连接 连我的手机热点。还是一样的错误， 实在没头绪了，打开搜索引擎，bing 前两页都看了 解决方法都是一致的改 dns，和 关掉代理，但是这两项试了还是不行，那么就更换搜索引擎试试，试试充满广告的度娘吧（实属没辙了）在一个文章内看见了&lt;/strong&gt;&lt;br /&gt;
+环境变量的字眼  &lt;strong&gt;开始行动，果然在环境变量里有个这个参数，具体怎么来的也不清楚先删掉&lt;/strong&gt;&lt;br /&gt;
+&lt;img data-src=&#34;https://cdn.jsdelivr.net/gh/NAILIANGCHI/image-bed/20240328133034.png&#34; alt=&#34;截图&#34; /&gt;&lt;br /&gt;
+重启 vscode&lt;br /&gt;
+ 看见了插件有了更新字眼 没错 可以正常使用了&lt;br /&gt;
+&lt;img data-src=&#34;https://cdn.jsdelivr.net/gh/NAILIANGCHI/image-bed/20240328133350.png&#34; alt=&#34;截图&#34; /&gt;&lt;br /&gt;
+真的很棒！！！&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://www.naraci.top/post/1.html</guid>
             <title>Java单列模式</title>
@@ -942,22 +958,6 @@ WHERE mobile = ’值‘     // 根据 mobile 来确认修改数据的值&lt;/p&
 &lt;blockquote&gt;
 &lt;p&gt;文章转载于 https://gitee.com/hixz/ccaa/&lt;/p&gt;
 &lt;/blockquote&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">https://www.naraci.top/post/25037.html</guid>
-            <title>记录一次vscode 插件商店 提取扩展插件 失败</title>
-            <link>https://www.naraci.top/post/25037.html</link>
-            <category term="idea" scheme="https://www.naraci.top/categories/idea/" />
-            <category term="id" scheme="https://www.naraci.top/tags/id/" />
-            <pubDate>Tue, 27 Sep 2022 23:35:01 +0800</pubDate>
-            <description><![CDATA[ &lt;p&gt;&lt;strong&gt;今天打算下载个 React 的一个插件 奈何怎么整都显示 提取扩展失败，相对来说 国内应该支持插件的下载不用用魔法工具的加持呀，难道大陆给限制了？我便使用魔法工具来尝试下载，果然还是不行，有从网上看更改 dns ， 难不成我的 dns 被污染了？ 我便又去改 dns，还是不行，现在就开始有点着急了。。。然后卸载软件清空缓存 ，不出所料还是不行，软件没有问题那么就是 我本地环境的问题了，开始排查，更换网络连接 连我的手机热点。还是一样的错误， 实在没头绪了，打开搜索引擎，bing 前两页都看了 解决方法都是一致的改 dns，和 关掉代理，但是这两项试了还是不行，那么就更换搜索引擎试试，试试充满广告的度娘吧（实属没辙了）在一个文章内看见了&lt;/strong&gt;&lt;br /&gt;
-环境变量的字眼  &lt;strong&gt;开始行动，果然在环境变量里有个这个参数，具体怎么来的也不清楚先删掉&lt;/strong&gt;&lt;br /&gt;
-！[截图] &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL05BSUxJQU5HQ0hJL2ltYWdlLWJlZC8yMDI0MDMyODEzMzAzNC5wbmc=&#34;&gt;https://cdn.jsdelivr.net/gh/NAILIANGCHI/image-bed/20240328133034.png&lt;/span&gt;&lt;br /&gt;
- 重启 vscode&lt;br /&gt;
- 看见了插件有了更新字眼 没错 可以正常使用了&lt;br /&gt;
-！[截图]&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL05BSUxJQU5HQ0hJL2ltYWdlLWJlZC8yMDI0MDMyODEzMzM1MC5wbmc=&#34;&gt;https://cdn.jsdelivr.net/gh/NAILIANGCHI/image-bed/20240328133350.png&lt;/span&gt;&lt;br /&gt;
- 真的很棒！！！&lt;/p&gt;
  ]]></description>
         </item>
         <item>
