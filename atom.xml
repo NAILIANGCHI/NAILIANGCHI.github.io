@@ -942,6 +942,22 @@ WHERE mobile = ’值‘     // 根据 mobile 来确认修改数据的值&lt;/p&
         <updated>2022-09-27T15:35:01.000Z</updated>
     </entry>
     <entry>
+        <id>https://www.naraci.top/post/25037.html</id>
+        <title>记录一次vscode 插件商店 提取扩展插件 失败</title>
+        <link rel="alternate" href="https://www.naraci.top/post/25037.html"/>
+        <content type="html">&lt;p&gt;&lt;strong&gt;今天打算下载个 React 的一个插件 奈何怎么整都显示 提取扩展失败，相对来说 国内应该支持插件的下载不用用魔法工具的加持呀，难道大陆给限制了？我便使用魔法工具来尝试下载，果然还是不行，有从网上看更改 dns ， 难不成我的 dns 被污染了？ 我便又去改 dns，还是不行，现在就开始有点着急了。。。然后卸载软件清空缓存 ，不出所料还是不行，软件没有问题那么就是 我本地环境的问题了，开始排查，更换网络连接 连我的手机热点。还是一样的错误， 实在没头绪了，打开搜索引擎，bing 前两页都看了 解决方法都是一致的改 dns，和 关掉代理，但是这两项试了还是不行，那么就更换搜索引擎试试，试试充满广告的度娘吧（实属没辙了）在一个文章内看见了&lt;/strong&gt;&lt;br /&gt;
+环境变量的字眼  &lt;strong&gt;开始行动，果然在环境变量里有个这个参数，具体怎么来的也不清楚先删掉&lt;/strong&gt;&lt;br /&gt;
+！[截图] &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL05BSUxJQU5HQ0hJL2ltYWdlLWJlZC8yMDI0MDMyODEzMzAzNC5wbmc=&#34;&gt;https://cdn.jsdelivr.net/gh/NAILIANGCHI/image-bed/20240328133034.png&lt;/span&gt;&lt;br /&gt;
+ 重启 vscode&lt;br /&gt;
+ 看见了插件有了更新字眼 没错 可以正常使用了&lt;br /&gt;
+！[截图]&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL05BSUxJQU5HQ0hJL2ltYWdlLWJlZC8yMDI0MDMyODEzMzM1MC5wbmc=&#34;&gt;https://cdn.jsdelivr.net/gh/NAILIANGCHI/image-bed/20240328133350.png&lt;/span&gt;&lt;br /&gt;
+ 真的很棒！！！&lt;/p&gt;
+</content>
+        <category term="idea" scheme="https://www.naraci.top/categories/idea/" />
+        <category term="id" scheme="https://www.naraci.top/tags/id/" />
+        <updated>2022-09-27T15:35:01.000Z</updated>
+    </entry>
+    <entry>
         <id>https://www.naraci.top/post/45550.html</id>
         <title>Photoshop制作太极</title>
         <link rel="alternate" href="https://www.naraci.top/post/45550.html"/>
@@ -971,22 +987,5 @@ ctrl+del 填充为白色后右击选择变换选区将中心点移至大圆的�
 </content>
         <category term="PS" scheme="https://www.naraci.top/tags/PS/" />
         <updated>2022-09-24T15:35:01.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://www.naraci.top/post/d45339ba.html</id>
-        <title>解决Typecho切换5.6php版本以上报错问题</title>
-        <link rel="alternate" href="https://www.naraci.top/post/d45339ba.html"/>
-        <content type="html">&lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
-&lt;p&gt;今天我检查网站跳转内置文件提示报错问题，提示 “未找到 xxx 文件” 便排查原因。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;于是我先从 php 版本排查是否是它的原因，调至 55php 后网站正常跳转。看来就是这个问题！在网上查原因发现 typecho 支持 mysql，7.x 就丢弃了这个改为 pdo_mysql1。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2 id=&#34;解决方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#解决方法&#34;&gt;#&lt;/a&gt; 解决方法：&lt;/h2&gt;
-&lt;p&gt;在 typecho 根目录里找见  &lt;code&gt;config.inc.php&lt;/code&gt;  打开它在第 55 行修改为以下内容&lt;/p&gt;
-&lt;figure class=&#34;highlight php&#34;&gt;&lt;figcaption data-lang=&#34;PHP&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token variable&#34;&gt;$db&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Typecho_Db&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string single-quoted-string&#34;&gt;&#39;Pdo_Mysql&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string single-quoted-string&#34;&gt;&#39;typecho_&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;...&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;img data-src=&#34;http://image.naraci.top/2022/03/11/a99eb769b24e6.png&#34; alt=&#34; &#34; /&gt;&lt;/p&gt;
-</content>
-        <category term="Course" scheme="https://www.naraci.top/categories/Course/" />
-        <category term="Course" scheme="https://www.naraci.top/tags/Course/" />
-        <updated>2022-09-10T15:35:01.000Z</updated>
     </entry>
 </feed>
